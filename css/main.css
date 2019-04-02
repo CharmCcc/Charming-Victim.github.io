@@ -1634,6 +1634,16 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.post-body p a {
+  color: #fc3c6c;
+  border-bottom: none;
+  border-bottom: 1px solid #fc3c6c;
+}
+.post-body p a:hover {
+  color: #a909eb;
+  border-bottom: none;
+  border-bottom: 1px solid #a909eb;
+}
 .sidebar {
   position: fixed;
   right: 0;
@@ -1760,7 +1770,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #82ffda;
+  background: #5974ff;
 }
 .feed-link,
 .chat {
