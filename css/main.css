@@ -1770,7 +1770,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bbd7b5;
+  background: #ffff62;
 }
 .feed-link,
 .chat {
@@ -1948,7 +1948,7 @@ pre .javascript .function {
   color: #fc6423;
 }
 .footer {
-  font-size: 14px;
+  font-size: 20px;
   color: #999;
 }
 .footer img {
@@ -2219,7 +2219,7 @@ pre .javascript .function {
 }
 #event-list li.event span.event-relative-time {
   display: inline-block;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   padding-left: 12px;
   color: #bbb;
@@ -2792,4 +2792,11 @@ ul.breadcrumb li+li:last-child {
   #footer a {
     color: #eee;
   }
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
