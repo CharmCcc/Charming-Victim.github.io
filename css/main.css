@@ -1782,8 +1782,8 @@ pre .javascript .function {
 .site-author-image {
   display: block;
   margin: 0 auto;
-  padding: 2px;
-  max-width: 120px;
+  padding: 20px;
+  max-width: 160px;
   height: auto;
   border: 1px solid #eee;
   border-radius: 60%;
@@ -1801,8 +1801,8 @@ pre .javascript .function {
 .site-description {
   margin-top: 0;
   text-align: center;
-  font-size: 13px;
-  color: #999;
+  font-size: 24px;
+  color: #ffc0cb;
 }
 .links-of-author {
   margin-top: 20px;
@@ -1825,7 +1825,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0b8242;
+  background: #60c9cc;
 }
 .feed-link,
 .chat {
@@ -1939,7 +1939,7 @@ pre .javascript .function {
   font-size: 16px;
 }
 .site-state-item-name {
-  font-size: 13px;
+  font-size: 16px;
   color: #999;
 }
 .post-toc-empty {
