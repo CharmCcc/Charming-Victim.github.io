@@ -103,17 +103,17 @@
 
 
 
-  <meta name="description" content="-第 2 章 物理层">
+  <meta name="description" content="-前言  -第 1 章 概述  -第 2 章 物理层  -第 3 章 数据链路层  -第 4 章 网络层  -第 5 章 运输层  -第 6 章 应用层  -第 8 章 互联网上的音频和视频服务  -第 9 章  无线网络和移动网络">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ComputerNetwork">
+<meta property="og:title" content="计算机网络">
 <meta property="og:url" content="http://yoursite.com/ComputerNetwork/index.html">
 <meta property="og:site_name" content="charmingBlog">
-<meta property="og:description" content="-第 2 章 物理层">
+<meta property="og:description" content="-前言  -第 1 章 概述  -第 2 章 物理层  -第 3 章 数据链路层  -第 4 章 网络层  -第 5 章 运输层  -第 6 章 应用层  -第 8 章 互联网上的音频和视频服务  -第 9 章  无线网络和移动网络">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T01:53:21.797Z">
+<meta property="og:updated_time" content="2019-04-08T11:55:45.390Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ComputerNetwork">
-<meta name="twitter:description" content="-第 2 章 物理层">
+<meta name="twitter:title" content="计算机网络">
+<meta name="twitter:description" content="-前言  -第 1 章 概述  -第 2 章 物理层  -第 3 章 数据链路层  -第 4 章 网络层  -第 5 章 运输层  -第 6 章 应用层  -第 8 章 互联网上的音频和视频服务  -第 9 章  无线网络和移动网络">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>ComputerNetwork | charmingBlog</title>
+  <title>计算机网络 | charmingBlog</title>
   
 
 
@@ -410,7 +410,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">ComputerNetwork
+<h1 class="post-title" itemprop="name headline">计算机网络
 
 </h1>
 
@@ -430,7 +430,23 @@
       <div class="post-body">
         
         
-          <p>-<a href="/resources/ComputerNetwork/02.pptx">第 2 章 物理层</a></p>
+          <p>-<a href="/resources/ComputerNetwork/00.ppt">前言</a><br><div class="pdf" target="/resources/ComputerNetwork/00.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/01.pptx">第 1 章 概述</a><br><div class="pdf" target="/resources/ComputerNetwork/01.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/02.pptx">第 2 章 物理层</a><br><div class="pdf" target="/resources/ComputerNetwork/02.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/03.pptx">第 3 章 数据链路层</a><br><div class="pdf" target="/resources/ComputerNetwork/03.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/04.pptx">第 4 章 网络层</a><br><div class="pdf" target="/resources/ComputerNetwork/04.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/05.pptx">第 5 章 运输层</a><br><div class="pdf" target="/resources/ComputerNetwork/05.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/06.pptx">第 6 章 应用层</a><br><div class="pdf" target="/resources/ComputerNetwork/06.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/08.pptx">第 8 章 互联网上的音频和视频服务</a><br><div class="pdf" target="/resources/ComputerNetwork/08.pdf" height></div></p>
+<hr>
+<p>-<a href="/resources/ComputerNetwork/09.pptx">第 9 章  无线网络和移动网络</a><br><div class="pdf" target="/resources/ComputerNetwork/09.pdf" height></div></p>
 
         
       </div>
@@ -1142,6 +1158,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 
