@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[计算机网络知识巩固(一)]]></title>
+    <url>%2F2019%2F04%2F09%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA%2F</url>
+    <content type="text"><![CDATA[计算机网络体系结构概述将实现互联网所面临的主要问题划分层次： 通过应用进程间的交互来完成特定网络应用 &emsp;&emsp;&emsp;应用层（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P） 主机间的进程通信 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;运输层1.将来自网络的数据包交给哪个应用进程(端口号)2.可靠传输服务和不可靠传输服务 数据包如何从原网络传到目的网络 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;网络层1.对各网络的标识(IP地址的网络号部分)2.数据包的路由(路由器的路由选择协议和转发机制) 数据包如何在一段链路上传输 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据链路层1.对主机和路由器的网络接口的标识(MAC地址)2.广播信道和点对点信道3.差错检测和可靠传输 主机，路由器等网络设备如何接入网络 &emsp;&emsp;&emsp;&emsp;&emsp;物理层1.使用何种的新号标识比特0和1(新号的调制和编码)2.使用何种物理接口(机械尺寸，引脚数量和排列) 分层思想 &emsp;OSI/RM体系结构 &emsp; &emsp;TCP/IP体系结构 &emsp; 五层协议体系结构 &emsp; 7 &emsp;&emsp;应用层 &emsp; 4 &emsp;应用层 &emsp; 5 &emsp;应用层 &emsp; &emsp; 6 &emsp;&emsp;表示层 &emsp; (HTTP,FTP,SMTP等) &emsp; &emsp; &emsp; &emsp; 5 &emsp;&emsp;会话层 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 4 &emsp;&emsp;运输层 &emsp; 3 &emsp;运输层(TCP或UDP) &emsp; 4 &emsp;运输层 &emsp; &emsp; 3 &emsp;&emsp;网络层 &emsp; 2 &emsp;网际层IP &emsp; 3 &emsp;网络层 &emsp; &emsp; &emsp;2 &emsp;数据链路层 &emsp; &emsp;1 &emsp;网络接口层 &emsp; &emsp;&emsp;2 &emsp;数据链路层 &emsp; &emsp; 1 &emsp;&emsp;物理层 &emsp; &emsp; &emsp; 1 &emsp;物理层 &emsp; 以上知识源于B站点击此处跳转]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>B站视频</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F04%2F02%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
