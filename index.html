@@ -661,7 +661,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-10 09:56:40" itemprop="dateModified" datetime="2019-04-10T09:56:40+08:00">2019-04-10</time>
+                <time title="Modified: 2019-04-10 09:59:00" itemprop="dateModified" datetime="2019-04-10T09:59:00+08:00">2019-04-10</time>
               
             
           </span>
@@ -742,112 +742,25 @@
 
       
         
-          
-            <h1 id="计算机网络体系结构概述"><a href="#计算机网络体系结构概述" class="headerlink" title="计算机网络体系结构概述"></a>计算机网络体系结构概述</h1><h2 id="将实现互联网所面临的主要问题划分层次："><a href="#将实现互联网所面临的主要问题划分层次：" class="headerlink" title="将实现互联网所面临的主要问题划分层次："></a>将实现互联网所面临的主要问题划分层次：</h2><hr>
+          <h1 id="计算机网络体系结构概述"><a href="#计算机网络体系结构概述" class="headerlink" title="计算机网络体系结构概述"></a>计算机网络体系结构概述</h1><h2 id="将实现互联网所面临的主要问题划分层次："><a href="#将实现互联网所面临的主要问题划分层次：" class="headerlink" title="将实现互联网所面临的主要问题划分层次："></a>将实现互联网所面临的主要问题划分层次：</h2><hr>
 <ul>
 <li>通过应用进程间的交互来完成特定网络应用    &emsp;&emsp;&emsp;<code>应用层</code><br>（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P）</li>
 </ul>
 <hr>
 <ul>
-<li>主机间的进程通信  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>运输层</code><br>1.将来自网络的数据包交给哪个应用进程(端口号)<br>2.可靠传输服务和不可靠传输服务</li>
-</ul>
-<hr>
-<ul>
-<li>数据包如何从原网络传到目的网络  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>网络层</code><br>1.对各网络的标识(IP地址的网络号部分)<br>2.数据包的路由(路由器的路由选择协议和转发机制)</li>
-</ul>
-<hr>
-<ul>
-<li>数据包如何在一段链路上传输  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>数据链路层</code><br>1.对主机和路由器的网络接口的标识(MAC地址)<br>2.广播信道和点对点信道<br>3.差错检测和可靠传输</li>
-</ul>
-<hr>
-<ul>
-<li>主机，路由器等网络设备如何接入网络  &emsp;&emsp;&emsp;&emsp;&emsp;<code>物理层</code><br>1.使用何种的新号标识比特0和1(新号的调制和编码)<br>2.使用何种物理接口(机械尺寸，引脚数量和排列)</li>
-</ul>
-<hr>
-<h1 id="分层思想"><a href="#分层思想" class="headerlink" title="分层思想"></a>分层思想</h1><table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th style="text-align:center">&emsp;OSI/RM体系结构</th>
-<th style="text-align:center">&emsp;</th>
-<th style="text-align:center">&emsp;TCP/IP体系结构</th>
-<th style="text-align:center">&emsp;</th>
-<th style="text-align:center">五层协议体系结构</th>
-<th style="text-align:right"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">7 &emsp;&emsp;应用层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">4 &emsp;应用层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">5 &emsp;应用层</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">6 &emsp;&emsp;表示层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">(HTTP,FTP,SMTP等)</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">5 &emsp;&emsp;会话层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">4 &emsp;&emsp;运输层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">3 &emsp;运输层(TCP或UDP)</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">4 &emsp;运输层</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">3 &emsp;&emsp;网络层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">2 &emsp;网际层IP</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">3 &emsp;网络层</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">&emsp;2 &emsp;数据链路层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;1 &emsp;网络接口层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;&emsp;2 &emsp;数据链路层</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-<tr>
-<td style="text-align:left">&emsp;</td>
-<td style="text-align:center">1 &emsp;&emsp;物理层</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">&emsp;</td>
-<td style="text-align:center">1 &emsp;物理层</td>
-<td style="text-align:right">&emsp;</td>
-</tr>
-</tbody>
-</table>
-<p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>
-
+<li>主机间的进程通信  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>运输层</code><br>1.将来自网络的数据包交给哪个应用进程(端口号)<br>2.可靠传输服务和不可靠传输服务
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/09/计算机网络知识巩固/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
-    </div>
+    </li></ul></div>
 
     
 
