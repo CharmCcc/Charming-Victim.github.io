@@ -129,7 +129,11 @@
 <meta property="og:description" content="交换机的自学习算法">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://charming-victim.github.io/images/计算机网络/四/01.png">
-<meta property="og:updated_time" content="2019-04-12T08:42:21.532Z">
+<meta property="og:image" content="https://charming-victim.github.io/images/计算机网络/四/02.png">
+<meta property="og:image" content="https://charming-victim.github.io/images/计算机网络/四/03.png">
+<meta property="og:image" content="https://charming-victim.github.io/images/计算机网络/四/04.png">
+<meta property="og:image" content="https://charming-victim.github.io/images/计算机网络/四/05.png">
+<meta property="og:updated_time" content="2019-04-12T12:11:15.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络知识巩固(四)">
 <meta name="twitter:description" content="交换机的自学习算法">
@@ -474,7 +478,7 @@
                 
               
 
-              <time title="Created: 2019-04-12 15:03:52 / Modified: 16:42:21" itemprop="dateCreated datePublished" datetime="2019-04-12T15:03:52+08:00">2019-04-12</time>
+              <time title="Created: 2019-04-12 15:03:52 / Modified: 20:11:15" itemprop="dateCreated datePublished" datetime="2019-04-12T15:03:52+08:00">2019-04-12</time>
             
 
             
@@ -532,7 +536,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">593</span>
+                <span title="Symbols count in article">1.3k</span>
               
 
               
@@ -590,9 +594,37 @@
 </li>
 </ul>
 <h2 id="交换机的生成树协议STP-功能介绍"><a href="#交换机的生成树协议STP-功能介绍" class="headerlink" title="交换机的生成树协议STP-功能介绍"></a>交换机的生成树协议STP-功能介绍</h2><blockquote>
-<h3 id="STP出现的背景"><a href="#STP出现的背景" class="headerlink" title="STP出现的背景"></a>STP出现的背景</h3><pre><code>在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性,使得某段网络链路
-出现故障时整个网络仍可通信,
-</code></pre></blockquote>
+<h3 id="STP出现的背景"><a href="#STP出现的背景" class="headerlink" title="STP出现的背景"></a>STP出现的背景</h3><pre><code>在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性,
+使得某段网络链路出现故障时整个网络仍可通信,
+但增加冗余链路形成了网络环路,
+网络环路所带来的问题：
+    1. 广播风暴(大量消耗网络资源，使得网络无法正常转发其他数据帧)
+    2. 主机收到重复的广播帧
+    3. 交换机的帧交换表震荡(漂移)
+</code></pre><h3 id="使用生成树协议STP解决网络环路问题"><a href="#使用生成树协议STP解决网络环路问题" class="headerlink" title="使用生成树协议STP解决网络环路问题"></a>使用生成树协议STP解决网络环路问题</h3><pre><code>以太网交换机使用生成树协议STP(Spanning Tree Protocol),
+可以在提高网络可靠性的同时又避免网络环路带来的各种问题. 
+    1. 不论交换机之间采用怎样的物理连接,交换机都能够自动计算并构建一个
+       逻辑上没有环路的网络,其逻辑拓扑结构必须是树型的(无逻辑环路).
+    2. 最终生成的树型逻辑拓扑要确保联通整个网络的每一个部分.
+    3. 当首次连接交换机或网络物理拓扑发生变化时(有可能是认为改变或故障),
+       交换机都将进行生成树的重新计算.
+</code></pre><h3 id="生成树算法STA"><a href="#生成树算法STA" class="headerlink" title="生成树算法STA"></a>生成树算法STA</h3><pre><code>生成树算法STA(Spanning Tree Algorithm)是生成树协议STP的核心.
+它的实现目标是: 在包含有物理环路的网络中,构建出一个能够连通全网各节点的树型无环逻辑拓扑.
+    生成树算法的三个步骤:
+        1. &quot;选举&quot;根交换机
+        2. &quot;选举&quot;根端口
+        3. &quot;选举&quot;制定端口并阻塞备用端口
+</code></pre><p>  注意<br>  <img src="/images/计算机网络/四/02.png" alt="BPDU"></p>
+<ol>
+<li><p>“选举”根交换机<br><img src="/images/计算机网络/四/03.png" alt="&quot;选举&quot;根交换机"></p>
+</li>
+<li><p>“选举”根端口<br><img src="/images/计算机网络/四/04.png" alt="&quot;选举&quot;根端口"></p>
+</li>
+<li><p>“选举”制定端口并阻塞备用端口<br><img src="/images/计算机网络/四/05.png" alt="&quot;选举&quot;制定端口并阻塞备用端口"></p>
+</li>
+</ol>
+</blockquote>
+<p><code>大致了解一下步骤吧</code><br><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>
 
       
     </div>
@@ -623,7 +655,7 @@
   <p><span>本文标题:</span><a href="/2019/04/12/计算机网络知识巩固-四/">计算机网络知识巩固(四)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 CuiHongMing 的个人博客">CuiHongMing</a></p>
   <p><span>发布时间:</span>2019年04月12日 - 15:04</p>
-  <p><span>最后更新:</span>2019年04月12日 - 16:04</p>
+  <p><span>最后更新:</span>2019年04月12日 - 20:04</p>
   <p><span>原始链接:</span><a href="/2019/04/12/计算机网络知识巩固-四/" title="计算机网络知识巩固(四)">https://charming-victim.github.io/2019/04/12/计算机网络知识巩固-四/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://charming-victim.github.io/2019/04/12/计算机网络知识巩固-四/" aria-label="复制成功！"></i></span>
   </p>
@@ -922,7 +954,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集线器和交换机的区别"><span class="nav-number">1.</span> <span class="nav-text">集线器和交换机的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以太网交换机的自学习算法"><span class="nav-number">2.</span> <span class="nav-text">以太网交换机的自学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以太网交换机的转发原理"><span class="nav-number">2.1.</span> <span class="nav-text">以太网交换机的转发原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换机的生成树协议STP-功能介绍"><span class="nav-number">2.2.</span> <span class="nav-text">交换机的生成树协议STP-功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#STP出现的背景"><span class="nav-number">2.2.1.</span> <span class="nav-text">STP出现的背景</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集线器和交换机的区别"><span class="nav-number">1.</span> <span class="nav-text">集线器和交换机的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以太网交换机的自学习算法"><span class="nav-number">2.</span> <span class="nav-text">以太网交换机的自学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以太网交换机的转发原理"><span class="nav-number">2.1.</span> <span class="nav-text">以太网交换机的转发原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换机的生成树协议STP-功能介绍"><span class="nav-number">2.2.</span> <span class="nav-text">交换机的生成树协议STP-功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#STP出现的背景"><span class="nav-number">2.2.1.</span> <span class="nav-text">STP出现的背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用生成树协议STP解决网络环路问题"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用生成树协议STP解决网络环路问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成树算法STA"><span class="nav-number">2.2.3.</span> <span class="nav-text">生成树算法STA</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -968,7 +1000,7 @@
     
       <span class="post-meta-item-text">Reading time total &asymp;</span>
     
-    <span title="Reading time total">3 mins.</span>
+    <span title="Reading time total">4 mins.</span>
   
 </div>
 
