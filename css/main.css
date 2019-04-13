@@ -1834,7 +1834,7 @@ pre .javascript .function {
   padding: 20px;
   max-width: 160px;
   height: auto;
-  border: 1px solid #eee;
+  border: 0px solid #eee;
   border-radius: 60%;
   transition: 2.5s all;
 }
@@ -1874,7 +1874,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #40f278;
+  background: #a4c716;
 }
 .feed-link,
 .chat {
