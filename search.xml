@@ -1,67 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(四)]]></title>
-    <url>%2F2019%2F04%2F12%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦这篇例外呢，难度挺大的，想着分两篇发，但还是一鼓作气吧，吃得苦中苦 本小章简单介绍一下集线器和交换机的区别， 以及交换机的内部工作原理(重点). 集线器和交换机的区别 以太网交换机的自学习算法以太网交换机的转发原理 交换机工作在数据链路层(也包括物理层) 交换机收到数据帧后，根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理. 明确的转发:交换机知道应当从哪个/哪些接口转发该帧(单播，多播，广播). 盲目的转发:交换机不知道应当从哪个端口转发帧,只能将其通过除进入交换机的接口外的其他所有接口转发(也称为泛洪). 明确的丢弃:交换机知道不应该转发该帧，将其丢弃. 交换机是一种即插即用设备,其内部的帧交换表是通过自学习算法自动地逐渐建立起来的. 登记MAC地址与接口号:提取帧的源mac地址,将其与该帧进入本交换机接口的接口号一起作为一个条目写入交换机的帧交换表 转发帧根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理(明确转发,盲目转发,丢弃). 帧交换表中每个条目都有自己的有效时间,到期删除:原因:12交换机的接口更换另一台主机主机更换网络适配器(网卡) 交换机的生成树协议STP-功能介绍 STP出现的背景在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性, 使得某段网络链路出现故障时整个网络仍可通信, 但增加冗余链路形成了网络环路, 网络环路所带来的问题： 1. 广播风暴(大量消耗网络资源，使得网络无法正常转发其他数据帧) 2. 主机收到重复的广播帧 3. 交换机的帧交换表震荡(漂移) 使用生成树协议STP解决网络环路问题以太网交换机使用生成树协议STP(Spanning Tree Protocol), 可以在提高网络可靠性的同时又避免网络环路带来的各种问题. 1. 不论交换机之间采用怎样的物理连接,交换机都能够自动计算并构建一个 逻辑上没有环路的网络,其逻辑拓扑结构必须是树型的(无逻辑环路). 2. 最终生成的树型逻辑拓扑要确保联通整个网络的每一个部分. 3. 当首次连接交换机或网络物理拓扑发生变化时(有可能是认为改变或故障), 交换机都将进行生成树的重新计算. 生成树算法STA生成树算法STA(Spanning Tree Algorithm)是生成树协议STP的核心. 它的实现目标是: 在包含有物理环路的网络中,构建出一个能够连通全网各节点的树型无环逻辑拓扑. 生成树算法的三个步骤: 1. &quot;选举&quot;根交换机 2. &quot;选举&quot;根端口 3. &quot;选举&quot;制定端口并阻塞备用端口 注意 “选举”根交换机 “选举”根端口 “选举”制定端口并阻塞备用端口 大致了解一下步骤吧以上知识源于B站点击此处跳转]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>计算机网络知识巩固(四)</title>
+      <link href="/2019/04/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B/"/>
+      <url>/2019/04/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code><br><code>这篇例外呢，难度挺大的，想着分两篇发，但还是一鼓作气吧，吃得苦中苦</code></p><blockquote><p>  本小章简单介绍一下集线器和交换机的区别，<br>  以及交换机的内部工作原理(重点).</p></blockquote><h1 id="集线器和交换机的区别"><a href="#集线器和交换机的区别" class="headerlink" title="集线器和交换机的区别"></a>集线器和交换机的区别</h1><p><img src="/images/计算机网络/四/01.png" alt="集线器和交换机的区别"></p><h1 id="以太网交换机的自学习算法"><a href="#以太网交换机的自学习算法" class="headerlink" title="以太网交换机的自学习算法"></a>以太网交换机的自学习算法</h1><h2 id="以太网交换机的转发原理"><a href="#以太网交换机的转发原理" class="headerlink" title="以太网交换机的转发原理"></a>以太网交换机的转发原理</h2><ul><li>交换机工作在数据链路层(也包括物理层)</li><li>交换机收到数据帧后，根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理.<ul><li>明确的转发:<br><code>交换机知道应当从哪个/哪些接口转发该帧(单播，多播，广播).</code></li><li>盲目的转发:<br><code>交换机不知道应当从哪个端口转发帧,只能将其通过除进入交换机的接口外的其他所有接口转发(也称为泛洪).</code></li><li>明确的丢弃:<br><code>交换机知道不应该转发该帧，将其丢弃.</code></li></ul></li><li>交换机是一种即插即用设备,其内部的帧交换表是通过自学习算法自动地逐渐建立起来的.<ol><li>登记MAC地址与接口号:<br><code>提取帧的源mac地址,将其与该帧进入本交换机接口的接口号一起作为一个条目写入交换机的帧交换表</code> </li><li>转发帧<br><code>根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理(明确转发,盲目转发,丢弃).</code></li><li>帧交换表中每个条目都有自己的有效时间,到期删除:<figure class="highlight bash"><figcaption><span>原因:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">交换机的接口更换另一台主机</span><br><span class="line">主机更换网络适配器(网卡)</span><br></pre></td></tr></table></figure></li></ol></li></ul><h2 id="交换机的生成树协议STP-功能介绍"><a href="#交换机的生成树协议STP-功能介绍" class="headerlink" title="交换机的生成树协议STP-功能介绍"></a>交换机的生成树协议STP-功能介绍</h2><blockquote><h3 id="STP出现的背景"><a href="#STP出现的背景" class="headerlink" title="STP出现的背景"></a>STP出现的背景</h3><pre><code>在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性,使得某段网络链路出现故障时整个网络仍可通信,但增加冗余链路形成了网络环路,网络环路所带来的问题：    1. 广播风暴(大量消耗网络资源，使得网络无法正常转发其他数据帧)    2. 主机收到重复的广播帧    3. 交换机的帧交换表震荡(漂移)</code></pre><h3 id="使用生成树协议STP解决网络环路问题"><a href="#使用生成树协议STP解决网络环路问题" class="headerlink" title="使用生成树协议STP解决网络环路问题"></a>使用生成树协议STP解决网络环路问题</h3><pre><code>以太网交换机使用生成树协议STP(Spanning Tree Protocol),可以在提高网络可靠性的同时又避免网络环路带来的各种问题.     1. 不论交换机之间采用怎样的物理连接,交换机都能够自动计算并构建一个       逻辑上没有环路的网络,其逻辑拓扑结构必须是树型的(无逻辑环路).    2. 最终生成的树型逻辑拓扑要确保联通整个网络的每一个部分.    3. 当首次连接交换机或网络物理拓扑发生变化时(有可能是认为改变或故障),       交换机都将进行生成树的重新计算.</code></pre><h3 id="生成树算法STA"><a href="#生成树算法STA" class="headerlink" title="生成树算法STA"></a>生成树算法STA</h3><pre><code>生成树算法STA(Spanning Tree Algorithm)是生成树协议STP的核心.它的实现目标是: 在包含有物理环路的网络中,构建出一个能够连通全网各节点的树型无环逻辑拓扑.    生成树算法的三个步骤:        1. &quot;选举&quot;根交换机        2. &quot;选举&quot;根端口        3. &quot;选举&quot;制定端口并阻塞备用端口</code></pre><p>  注意<br>  <img src="/images/计算机网络/四/02.png" alt="BPDU"></p><ol><li><p>“选举”根交换机<br><img src="/images/计算机网络/四/03.png" alt="&quot;选举&quot;根交换机"></p></li><li><p>“选举”根端口<br><img src="/images/计算机网络/四/04.png" alt="&quot;选举&quot;根端口"></p></li><li><p>“选举”制定端口并阻塞备用端口<br><img src="/images/计算机网络/四/05.png" alt="&quot;选举&quot;制定端口并阻塞备用端口"></p></li></ol></blockquote><p><code>大致了解一下步骤吧</code><br><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(三)]]></title>
-    <url>%2F2019%2F04%2F10%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章简单介绍一下MAC地址，IP地址，以及ARP协议 计算机网络的寻址问题MAC地址MAC地址的作用 MAC地址的格式 标准表示法：XX-XX-XX-XX-XX-XX 例如，在Windows下00-0C-CF-93-8C-92 其他表示法：1.XX:XX:XX:XX:XX:XX 例如，在Linux,ios,Android下 00:0C:CF:93:8C:92 2.XXXX.XXXX.XXXX 例如，在Cisco Packet Tracer下000C.CF93.8C92 MAC地址的发送顺序12345字节发送顺序： 第一字节 → 第六字节字节内的比特发送顺序： b0 → b7 IP地址IP地址的作用 IP地址是互联网上各主机使用的地址，标识两部分信息：网络编号： 标识互联网上数以百万的网络 主机编号： 标识同意网络上不同的主机 很显然，之前介绍的MAC地址不具有这样的功能。12如果只是一个单独的网络，不连入互联网，可以只使用MAC地址。如果主机所在的网络连入互联网，则IP地址和MAC地址都使用。 从五层体系结构看IP地址与MAC地址 下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况 具体的文字描述(可以加深理解转发过程) IP地址与MAC地址的关系 地址解析协议ARP1.在ARP高速缓存表中查找目的IP地址对应的MAC地址(因为在数据链路层需要封装该信息，如找不到则跳到第二步)2.广播发送ARP请求3.单播发送ARP响应4.ARP高速缓存表的更新(动态条目和静态条目)5.ARP作用范围：一段链路或同一网络内 补充一下内容吧,CSMA/CD协议没必要另写一章咯12345CSMA/CD曾经用于各种总线结构以太网和双绞线以太网的早起版本中.现在的以太网基于交换机和全双工连接，不会有碰撞，因此没必要使用CSMA/CD. CSMA/CD协议 其实不是很重要，初略记记英文单词就够了 载波监听多点接入/碰撞检测 Carrier Sense Multiple Access with Collision Detection 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(三)</title>
+      <link href="/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89/"/>
+      <url>/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><blockquote><p>  本小章简单介绍一下MAC地址，IP地址，以及ARP协议</p></blockquote><h1 id="计算机网络的寻址问题"><a href="#计算机网络的寻址问题" class="headerlink" title="计算机网络的寻址问题"></a>计算机网络的寻址问题</h1><h2 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><h3 id="MAC地址的作用"><a href="#MAC地址的作用" class="headerlink" title="MAC地址的作用"></a>MAC地址的作用</h3><p><img src="/images/计算机网络/三/01.png" alt="MAC作用"></p><h3 id="MAC地址的格式"><a href="#MAC地址的格式" class="headerlink" title="MAC地址的格式"></a>MAC地址的格式</h3><p><img src="/images/计算机网络/三/02.png" alt="MAC格式"></p><blockquote><p>标准表示法：XX-XX-XX-XX-XX-XX</p><h4 id="例如，在Windows下"><a href="#例如，在Windows下" class="headerlink" title="例如，在Windows下"></a>例如，在<code>Windows</code>下</h4><pre><code>00-0C-CF-93-8C-92</code></pre></blockquote><hr><blockquote><p>其他表示法：<br>1.XX:XX:XX:XX:XX:XX</p><h4 id="例如，在Linux-ios-Android下"><a href="#例如，在Linux-ios-Android下" class="headerlink" title="例如，在Linux,ios,Android下"></a>例如，在<code>Linux</code>,<code>ios</code>,<code>Android</code>下</h4><p>   00:0C:CF:93:8C:92</p><p>2.XXXX.XXXX.XXXX</p><h4 id="例如，在Cisco-Packet-Tracer下"><a href="#例如，在Cisco-Packet-Tracer下" class="headerlink" title="例如，在Cisco Packet Tracer下"></a>例如，在<code>Cisco Packet Tracer</code>下</h4><pre><code>000C.CF93.8C92</code></pre></blockquote><h3 id="MAC地址的发送顺序"><a href="#MAC地址的发送顺序" class="headerlink" title="MAC地址的发送顺序"></a>MAC地址的发送顺序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">字节发送顺序：</span><br><span class="line">    第一字节  →  第六字节</span><br><span class="line"></span><br><span class="line">字节内的比特发送顺序：</span><br><span class="line">    b0  →  b7</span><br></pre></td></tr></table></figure><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><h3 id="IP地址的作用"><a href="#IP地址的作用" class="headerlink" title="IP地址的作用"></a>IP地址的作用</h3><blockquote><h3 id="IP地址是互联网上各主机使用的地址，标识两部分信息："><a href="#IP地址是互联网上各主机使用的地址，标识两部分信息：" class="headerlink" title="IP地址是互联网上各主机使用的地址，标识两部分信息："></a>IP地址是互联网上各主机使用的地址，标识两部分信息：</h3><pre><code>网络编号：    标识互联网上数以百万的网络主机编号：       标识同意网络上不同的主机</code></pre></blockquote><p>很显然，之前介绍的MAC地址不具有这样的功能。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果只是一个单独的网络，不连入互联网，可以只使用MAC地址。</span><br><span class="line">如果主机所在的网络连入互联网，则IP地址和MAC地址都使用。</span><br></pre></td></tr></table></figure></p><h2 id="从五层体系结构看IP地址与MAC地址"><a href="#从五层体系结构看IP地址与MAC地址" class="headerlink" title="从五层体系结构看IP地址与MAC地址"></a>从五层体系结构看IP地址与MAC地址</h2><p><img src="/images/计算机网络/三/03.png" alt="从五层体系结构看IP地址与MAC地址"></p><h2 id="下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况"><a href="#下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况" class="headerlink" title="下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况"></a>下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况</h2><p><img src="/images/计算机网络/三/04.png" alt="数据包转发过程中IP地址与MAC地址的变化情况"></p><h3 id="具体的文字描述-可以加深理解转发过程"><a href="#具体的文字描述-可以加深理解转发过程" class="headerlink" title="具体的文字描述(可以加深理解转发过程)"></a>具体的文字描述(可以加深理解转发过程)</h3><p><img src="/images/计算机网络/三/05.png" alt="数据包转发过程"></p><h2 id="IP地址与MAC地址的关系"><a href="#IP地址与MAC地址的关系" class="headerlink" title="IP地址与MAC地址的关系"></a>IP地址与MAC地址的关系</h2><p><img src="/images/计算机网络/三/06.png" alt="IP地址与MAC地址的关系"></p><h2 id="地址解析协议ARP"><a href="#地址解析协议ARP" class="headerlink" title="地址解析协议ARP"></a>地址解析协议ARP</h2><p>1.在ARP高速缓存表中查找目的IP地址对应的MAC地址(因为在数据链路层需要封装该信息，如找不到则跳到第二步)<br>2.广播发送ARP请求<br>3.单播发送ARP响应<br>4.ARP高速缓存表的更新(动态条目和静态条目)<br>5.ARP作用范围：一段链路或同一网络内</p><hr><hr><p><em>补充一下内容吧,CSMA/CD协议没必要另写一章咯</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CSMA/CD曾经用于各种总线结构以太网</span><br><span class="line">和双绞线以太网的早起版本中.</span><br><span class="line"></span><br><span class="line">现在的以太网基于交换机和全双工连接，</span><br><span class="line">不会有碰撞，因此没必要使用CSMA/CD.</span><br></pre></td></tr></table></figure></p><blockquote><h2 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h2><p>  <code>其实不是很重要，初略记记英文单词就够了</code></p><pre><code>载波监听多点接入/碰撞检测Carrier Sense Multiple Access with Collision Detection</code></pre><p><img src="/images/计算机网络/三/07.png" alt="CSMA/CD协议"></p></blockquote><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(二)]]></title>
-    <url>%2F2019%2F04%2F10%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 计算机网络体系结构中的专用术语实体1任何可发送或接受信息的硬件或软件进程 对等实体1收发双方相同层次中的实体 协议1控制两个对等实体进行逻辑通信的规则的集合 协议的三要素 语法：定义所交换信息的格式 数据链路层帧格式举例：PPP帧，以太网MAC帧，802.11局域网数据帧 网络层数据包格式举例：IP数据报，ARP，ICMP，RIP，OSPF，BGP报文 运输层数据包格式举例：UDP用户数据报，TCP报文段 语义：定义收发双方所要完成的操作 同步：定义收发双方的时序关系 服务12在协议的控制下，两个对等实体间的逻辑通信使得本层能够向上一层提供服务。要实现本层协议，还需要使用下面一层提供的服务。 服务访问点1在同一系统中相邻两层的实体交换信息的逻辑接口，用于区分不同的服务类型 例如: 链路层的服务访问点为帧的“类型”字段 网络层的服务访问点为IP数据报首部中的“协议”字段 运输层的服务访问点为端口号 服务原语1上层使用下层所提供的服务必须通过与下层交换一些命令，这些命令称为服务原语 协议数据单元PDU1对等层次之间传送的数据包称为该层的协议数据单元 服务数据单元SDU1同一系统内，层与层之间交换的数据包称为服务数据单元 TCP/IP的四层体系结构 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(二)</title>
+      <link href="/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C/"/>
+      <url>/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><h1 id="计算机网络体系结构中的专用术语"><a href="#计算机网络体系结构中的专用术语" class="headerlink" title="计算机网络体系结构中的专用术语"></a>计算机网络体系结构中的专用术语</h1><h2 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">任何可发送或接受信息的硬件或软件进程</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="对等实体"><a href="#对等实体" class="headerlink" title="对等实体"></a>对等实体</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">收发双方相同层次中的实体</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/01.png" alt="对等实体"></p><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">控制两个对等实体进行逻辑通信的规则的集合</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/02.png" alt="协议"></p><h2 id="协议的三要素"><a href="#协议的三要素" class="headerlink" title="协议的三要素"></a>协议的三要素</h2><blockquote><p>语法：定义所交换信息的格式</p><pre><code>数据链路层帧格式举例：PPP帧，以太网MAC帧，802.11局域网数据帧网络层数据包格式举例：IP数据报，ARP，ICMP，RIP，OSPF，BGP报文运输层数据包格式举例：UDP用户数据报，TCP报文段</code></pre></blockquote><blockquote><p>语义：定义收发双方所要完成的操作</p></blockquote><blockquote><p>同步：定义收发双方的时序关系</p><p>   <img src="/images/计算机网络/二/03.png" alt="同步"></p></blockquote><h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在协议的控制下，两个对等实体间的逻辑通信使得本层能够向上一层提供服务。</span><br><span class="line">要实现本层协议，还需要使用下面一层提供的服务。</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/04.png" alt="服务"></p><h2 id="服务访问点"><a href="#服务访问点" class="headerlink" title="服务访问点"></a>服务访问点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在同一系统中相邻两层的实体交换信息的逻辑接口，用于区分不同的服务类型</span><br></pre></td></tr></table></figure><blockquote><p>例如:</p></blockquote><pre><code>链路层的服务访问点为帧的“类型”字段网络层的服务访问点为IP数据报首部中的“协议”字段运输层的服务访问点为端口号</code></pre><h2 id="服务原语"><a href="#服务原语" class="headerlink" title="服务原语"></a>服务原语</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上层使用下层所提供的服务必须通过与下层交换一些命令，这些命令称为服务原语</span><br></pre></td></tr></table></figure><h2 id="协议数据单元PDU"><a href="#协议数据单元PDU" class="headerlink" title="协议数据单元PDU"></a>协议数据单元PDU</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对等层次之间传送的数据包称为该层的协议数据单元</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/05.png" alt="PDU"></p><h2 id="服务数据单元SDU"><a href="#服务数据单元SDU" class="headerlink" title="服务数据单元SDU"></a>服务数据单元SDU</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同一系统内，层与层之间交换的数据包称为服务数据单元</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/06.png" alt="SDU"></p><h1 id="TCP-IP的四层体系结构"><a href="#TCP-IP的四层体系结构" class="headerlink" title="TCP/IP的四层体系结构"></a>TCP/IP的四层体系结构</h1><p><img src="/images/计算机网络/二/07.png" alt="TCP/IP的四层体系结构"></p><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(一)]]></title>
-    <url>%2F2019%2F04%2F09%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 计算机网络体系结构概述将实现互联网所面临的主要问题划分层次： 通过应用进程间的交互来完成特定网络应用 &emsp;&emsp;&emsp;应用层（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P） 主机间的进程通信 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;运输层1.将来自网络的数据包交给哪个应用进程(端口号)2.可靠传输服务和不可靠传输服务 数据包如何从原网络传到目的网络 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;网络层1.对各网络的标识(IP地址的网络号部分)2.数据包的路由(路由器的路由选择协议和转发机制) 数据包如何在一段链路上传输 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据链路层1.对主机和路由器的网络接口的标识(MAC地址)2.广播信道和点对点信道3.差错检测和可靠传输 主机，路由器等网络设备如何接入网络 &emsp;&emsp;&emsp;&emsp;&emsp;物理层1.使用何种的新号标识比特0和1(新号的调制和编码)2.使用何种物理接口(机械尺寸，引脚数量和排列) 分层思想 &emsp;OSI/RM体系结构 &emsp; &emsp;TCP/IP体系结构 &emsp; 五层协议体系结构 &emsp; 7 &emsp;&emsp;应用层 &emsp; 4 &emsp;应用层 &emsp; 5 &emsp;应用层 &emsp; &emsp; 6 &emsp;&emsp;表示层 &emsp; (HTTP,FTP,SMTP等) &emsp; &emsp; &emsp; &emsp; 5 &emsp;&emsp;会话层 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 4 &emsp;&emsp;运输层 &emsp; 3 &emsp;运输层(TCP或UDP) &emsp; 4 &emsp;运输层 &emsp; &emsp; 3 &emsp;&emsp;网络层 &emsp; 2 &emsp;网际层IP &emsp; 3 &emsp;网络层 &emsp; &emsp; &emsp;2 &emsp;数据链路层 &emsp; &emsp;1 &emsp;网络接口层 &emsp; &emsp;&emsp;2 &emsp;数据链路层 &emsp; &emsp; 1 &emsp;&emsp;物理层 &emsp; &emsp; &emsp; 1 &emsp;物理层 &emsp; 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(一)</title>
+      <link href="/2019/04/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA/"/>
+      <url>/2019/04/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><h1 id="计算机网络体系结构概述"><a href="#计算机网络体系结构概述" class="headerlink" title="计算机网络体系结构概述"></a>计算机网络体系结构概述</h1><h2 id="将实现互联网所面临的主要问题划分层次："><a href="#将实现互联网所面临的主要问题划分层次：" class="headerlink" title="将实现互联网所面临的主要问题划分层次："></a>将实现互联网所面临的主要问题划分层次：</h2><hr><ul><li>通过应用进程间的交互来完成特定网络应用    &emsp;&emsp;&emsp;<code>应用层</code><br>（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P）<a id="more"></a></li></ul><hr><ul><li>主机间的进程通信  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>运输层</code><br>1.将来自网络的数据包交给哪个应用进程(端口号)<br>2.可靠传输服务和不可靠传输服务</li></ul><hr><ul><li>数据包如何从原网络传到目的网络  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>网络层</code><br>1.对各网络的标识(IP地址的网络号部分)<br>2.数据包的路由(路由器的路由选择协议和转发机制)</li></ul><hr><ul><li>数据包如何在一段链路上传输  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>数据链路层</code><br>1.对主机和路由器的网络接口的标识(MAC地址)<br>2.广播信道和点对点信道<br>3.差错检测和可靠传输</li></ul><hr><ul><li>主机，路由器等网络设备如何接入网络  &emsp;&emsp;&emsp;&emsp;&emsp;<code>物理层</code><br>1.使用何种的新号标识比特0和1(新号的调制和编码)<br>2.使用何种物理接口(机械尺寸，引脚数量和排列)</li></ul><hr><h1 id="分层思想"><a href="#分层思想" class="headerlink" title="分层思想"></a>分层思想</h1><table><thead><tr><th style="text-align:left"></th><th style="text-align:center">&emsp;OSI/RM体系结构</th><th style="text-align:center">&emsp;</th><th style="text-align:center">&emsp;TCP/IP体系结构</th><th style="text-align:center">&emsp;</th><th style="text-align:center">五层协议体系结构</th><th style="text-align:right"></th></tr></thead><tbody><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">7 &emsp;&emsp;应用层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">4 &emsp;应用层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">5 &emsp;应用层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">6 &emsp;&emsp;表示层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">(HTTP,FTP,SMTP等)</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">5 &emsp;&emsp;会话层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">4 &emsp;&emsp;运输层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">3 &emsp;运输层(TCP或UDP)</td><td style="text-align:center">&emsp;</td><td style="text-align:center">4 &emsp;运输层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">3 &emsp;&emsp;网络层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">2 &emsp;网际层IP</td><td style="text-align:center">&emsp;</td><td style="text-align:center">3 &emsp;网络层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">&emsp;2 &emsp;数据链路层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;1 &emsp;网络接口层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;&emsp;2 &emsp;数据链路层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">1 &emsp;&emsp;物理层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">1 &emsp;物理层</td><td style="text-align:right">&emsp;</td></tr></tbody></table><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F04%2F02%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[My First Day In Github Pages]]></title>
-    <url>%2F2019%2F03%2F31%2FMy-First-Day-In-Github-Pages%2F</url>
-    <content type="text"></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/04/02/hello-world/"/>
+      <url>/2019/04/02/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><a id="more"></a><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>My First Day In Github Pages</title>
+      <link href="/2019/03/31/My-First-Day-In-Github-Pages/"/>
+      <url>/2019/03/31/My-First-Day-In-Github-Pages/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>essay[随笔]</category>
+          
+          <category> essay[随笔] </category>
+          
       </categories>
-      <tags>
-        <tag>入门</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
