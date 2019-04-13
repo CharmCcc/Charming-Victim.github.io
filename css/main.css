@@ -454,7 +454,7 @@ body {
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: 73%;
+    width: 90%;
   }
 }
 .main-inner {
@@ -468,7 +468,7 @@ body {
 }
 @media (min-width: 1600px) {
   .container .main-inner {
-    width: 73%;
+    width: 90%;
   }
 }
 .footer {
@@ -486,7 +486,7 @@ body {
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
-    width: 73%;
+    width: 90%;
   }
 }
 pre,
@@ -1874,7 +1874,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8e402f;
+  background: #40f278;
 }
 .feed-link,
 .chat {
@@ -2477,7 +2477,7 @@ ul.breadcrumb li+li:last-child {
 }
 @media (min-width: 1600px) {
   .header {
-    width: 73%;
+    width: 90%;
   }
 }
 @media (max-width: 991px) {
