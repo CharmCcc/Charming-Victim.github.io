@@ -1,129 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(八)]]></title>
-    <url>%2F2019%2F04%2F15%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AB%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章介绍一下默认路由和特定主机路由以及静态路由的路由环路问题. 默认路由和特定主机路由 特定主机路由,网络路由,默认路由 若有多条路由记录匹配,则”最长前缀匹配”,这样的路由更具体(也可认为更精确) 静态路由的路由环路问题 配置错误 聚合了不存在的网络 网络故障 配置错误导致路由环路由于路由表中有些条目手工添加,添加错误可能出现环路. 为了避免上述情况发生时IP数据报永无休止地转发下去, IP数据报首部有TTL生存字段,最大值为255,当路由器接收 数据报后将TTL减一,若TTL等于0则丢弃 聚合了不存在的网络而导致路由环路 上面可以解释为: 在路由表中由192.168.1.0/24和192.168.2.0/24聚合成一个网络192.168.0.0/22， 而192.168.0.0/22又包含了不存在的192.168.3.0/24和192.168.0.0/24, 若主机发送数据报给不存在的网络,路由器找不到路由记录时会走默认路由,而默认路由恰好 往回走则会出现环路问题. 解决方法:为不存在的网络地址添加黑洞路由,下一跳为null0 网络故障导致路由环路 这个也很好理解,主机发送给目的主机之间某条链路故障,路由表抹去了记录,路由器找不到记录只能走默认路由,和上述一样. (也可以添加对应的黑洞路由,当记录被抹去,则黑洞路由条目自动生效)]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>计算机网络知识巩固(八)</title>
+      <link href="/2019/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AB/"/>
+      <url>/2019/04/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AB/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><blockquote><p>  本小章介绍一下默认路由和特定主机路由以及静态路由的路由环路问题.</p></blockquote><h1 id="默认路由和特定主机路由"><a href="#默认路由和特定主机路由" class="headerlink" title="默认路由和特定主机路由"></a>默认路由和特定主机路由</h1><blockquote><h2 id="特定主机路由-网络路由-默认路由"><a href="#特定主机路由-网络路由-默认路由" class="headerlink" title="特定主机路由,网络路由,默认路由"></a>特定主机路由,网络路由,默认路由</h2><p>  <img src="https://upload-images.jianshu.io/upload_images/15186378-31e044c62138fb2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="特定主机路由,网络路由,默认路由"></p><h2 id="若有多条路由记录匹配-则”最长前缀匹配”-这样的路由更具体-也可认为更精确"><a href="#若有多条路由记录匹配-则”最长前缀匹配”-这样的路由更具体-也可认为更精确" class="headerlink" title="若有多条路由记录匹配,则”最长前缀匹配”,这样的路由更具体(也可认为更精确)"></a>若有多条路由记录匹配,则”最长前缀匹配”,这样的路由更具体(也可认为更精确)</h2></blockquote><h1 id="静态路由的路由环路问题"><a href="#静态路由的路由环路问题" class="headerlink" title="静态路由的路由环路问题"></a>静态路由的路由环路问题</h1><ul><li>配置错误</li><li>聚合了不存在的网络</li><li>网络故障</li></ul><blockquote><h2 id="配置错误导致路由环路"><a href="#配置错误导致路由环路" class="headerlink" title="配置错误导致路由环路"></a>配置错误导致路由环路</h2><pre><code>由于路由表中有些条目手工添加,添加错误可能出现环路.为了避免上述情况发生时IP数据报永无休止地转发下去,IP数据报首部有TTL生存字段,最大值为255,当路由器接收数据报后将TTL减一,若TTL等于0则丢弃</code></pre><p>  <img src="https://upload-images.jianshu.io/upload_images/15186378-94f6345f3716b7b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="配置错误导致路由环路"></p><h2 id="聚合了不存在的网络而导致路由环路"><a href="#聚合了不存在的网络而导致路由环路" class="headerlink" title="聚合了不存在的网络而导致路由环路"></a>聚合了不存在的网络而导致路由环路</h2><p>  <img src="https://upload-images.jianshu.io/upload_images/15186378-9bc4bbb89544fe48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="聚合了不存在的网络而导致路由环路"></p><pre><code>上面可以解释为:在路由表中由192.168.1.0/24和192.168.2.0/24聚合成一个网络192.168.0.0/22，而192.168.0.0/22又包含了不存在的192.168.3.0/24和192.168.0.0/24,若主机发送数据报给不存在的网络,路由器找不到路由记录时会走默认路由,而默认路由恰好往回走则会出现环路问题.</code></pre><p>  解决方法:为不存在的网络地址添加黑洞路由,下一跳为null0</p><h2 id="网络故障导致路由环路"><a href="#网络故障导致路由环路" class="headerlink" title="网络故障导致路由环路"></a>网络故障导致路由环路</h2><p>  这个也很好理解,主机发送给目的主机之间某条链路故障,路由表抹去了记录,路由器找不到记录只能走默认路由,和上述一样.<br>  (也可以添加对应的黑洞路由,当记录被抹去,则黑洞路由条目自动生效)</p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[转发和重定向的区别]]></title>
-    <url>%2F2019%2F04%2F14%2F%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
-    <content type="text"><![CDATA[转发和重定向区别详解作为一名程序员，特别是java web开发的程序员，在使用servlet/jsp的时候，我们必须要知道实现页面跳转的两种方式的区别和联系：即转发和重定向的区别。 RequestDispatcher.forward方法只能将请求转发给同一个WEB应用中的组件；而HttpServletResponse.sendRedirect 方法不仅可以重定向到当前应用程序中的其他资源，还可以重定向到同一个站点上的其他应用程序中的资源，甚至是使用绝对URL重定向到其他站点的资源。如果传递给HttpServletResponse.sendRedirect 方法的相对URL以“/”开头，它是相对于整个WEB站点的根目录；如果创建RequestDispatcher对象时指定的相对URL以“/”开头，它是相对于当前WEB应用程序的根目录。 调用HttpServletResponse.sendRedirect方法重定向的访问过程结束后，浏览器地址栏中显示的URL会发生改变，由初始的URL地址变成重定向的目标URL；而调用RequestDispatcher.forward 方法的请求转发过程结束后，浏览器地址栏保持初始的URL地址不变。 HttpServletResponse.sendRedirect方法对浏览器的请求直接作出响应，响应的结果就是告诉浏览器去重新发出对另外一个URL的 访问请求，这个过程好比有个绰号叫“浏览器”的人写信找张三借钱，张三回信说没有钱，让“浏览器”去找李四借，并将李四现在的通信地址告诉给了“浏览器”。于是，“浏览器”又按张三提供通信地址给李四写信借钱，李四收到信后就把钱汇给了“浏览器”。可见，“浏览器”一共发出了两封信和收到了两次回复， “浏览器”也知道他借到的钱出自李四之手。RequestDispatcher.forward方法在服务器端内部将请求转发给另外一个资源，浏览器只知道发出了请求并得到了响应结果，并不知道在服务器程序内部发生了转发行为。这个过程好比绰号叫“浏览器”的人写信找张三借钱，张三没有钱，于是张三找李四借了一些钱，甚至还可以加上自己的一些钱，然后再将这些钱汇给了“浏览器”。可见，“浏览器”只发 出了一封信和收到了一次回复，他只知道从张三那里借到了钱，并不知道有一部分钱出自李四之手。 RequestDispatcher.forward方法的调用者与被调用者之间共享相同的request对象和response对象，它们属于同一个访问请求和响应过程；而HttpServletResponse.sendRedirect方法调用者与被调用者使用各自的request对象和response对象，它们属于两个独立的访问请求和响应过程。对于同一个WEB应用程序的内部资源之间的跳转，特别是跳转之前要对请求进行一些前期预处理，并要使用HttpServletRequest.setAttribute方法传递预处理结果，那就应该使用RequestDispatcher.forward方法。不同WEB应用程序之间的重定向，特别是要重定向到另外一个WEB站点上的资源的情况，都应该使用HttpServletResponse.sendRedirect方法。 无论是RequestDispatcher.forward方法，还是HttpServletResponse.sendRedirect方法，在调用它们之前，都不能有内容已经被实际输出到了客户端。如果缓冲区中已经有了一些内容，这些内容将被从缓冲区中。 两种跳转获得对象的方式123456//获得转发对象getRequestDispatcher()HttpServletRequest(httpServletRequest).getRequestDispatcherServletContext.getRequestDispatcher(); //获得重定向对象sendRedirect()HttpServletResponse(httpServletResponse).sendRedirect(); 转发和跳转的小结 转发使用的是getRequestDispatcher()方法;重定向使用的是sendRedirect(); 转发：浏览器URL的地址栏不变。重定向：浏览器URL的地址栏改变； 转发是服务器行为，重定向是客户端行为； 转发是浏览器只做了一次访问请求。重定向是浏览器做了至少两次的访问请求； 转发2次跳转之间传输的信息不会丢失，重定向2次跳转之间传输的信息会丢失（request范围）。 转发和重定向的选择 重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。 因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了。 转发和重定向的应用场景在上面我已经提到了，转发是要比重定向快，因为重定向需要经过客户端，而转发没有。有时候，采用重定向会更好，若需要重定向到另外一个外部网站，则无法使用转发。另外，重定向还有一个应用场景：避免在用户重新加载页面时两次调用相同的动作。 例如，当提交产品表单的时候，执行保存的方法将会被调用，并执行相应的动作；这在一个真实的应用程序中，很有可能将表单中的所有产品信息加入到数据库中。但是如果在提交表单后，重新加载页面，执行保存的方法就很有可能再次被调用。同样的产品信息就将可能再次被添加，为了避免这种情况，提交表单后，你可以将用户重定向到一个不同的页面，这样的话，这个网页任意重新加载都没有副作用； 但是，使用重定向不太方便的地方是，使用它无法将值轻松地传递给目标页面。而采用转发，则可以简单地将属性添加到Model,使得目标视图可以轻松访问。由于重定向经过客户端，所以Model中的一切都会在重定向时丢失。但幸运的是，在Spring3.1版本以后，我们可以通过Flash属性，解决重定向时传值丢失的问题。 要使用Flash属性，必须在Spring MVC的配置文件中添加一个。然后，还必须再方法上添加一个新的参数类型：org.springframework.web.servlet.mvc.support.RedirectAttributes。 如下所示：123456789101112@RequestMapping(value="saveProduct",method=RequestMethod.POST)public String saveProduct(ProductForm productForm,RedirectAttributes redirectAttributes)&#123; //执行产品保存的业务逻辑等 //传递参数 redirectAttributes.addFlashAttribute("message","The product is saved successfully"); //执行重定向 return "redirect:/……";&#125; 参考自： 作者：liubin5620 来源：CSDN 原文：https://blog.csdn.net/liubin5620/article/details/79922692 版权声明：本文为博主原创文章，转载请附上博文链接！]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>转发和重定向的区别</title>
+      <link href="/2019/04/14/%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+      <url>/2019/04/14/%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="转发和重定向区别详解"><a href="#转发和重定向区别详解" class="headerlink" title="转发和重定向区别详解"></a>转发和重定向区别详解</h1><p>作为一名程序员，特别是java web开发的程序员，在使用servlet/jsp的时候，我们必须要知道实现页面跳转的两种方式的区别和联系：即转发和重定向的区别。</p><ol><li><p>RequestDispatcher.forward方法只能将请求转发给同一个WEB应用中的组件；而HttpServletResponse.sendRedirect 方法不仅可以重定向到当前应用程序中的其他资源，还可以重定向到同一个站点上的其他应用程序中的资源，甚至是使用绝对URL重定向到其他站点的资源。如果传递给HttpServletResponse.sendRedirect 方法的相对URL以“/”开头，它是相对于整个WEB站点的根目录；如果创建RequestDispatcher对象时指定的相对URL以“/”开头，它是相对于当前WEB应用程序的根目录。</p></li><li><p>调用HttpServletResponse.sendRedirect方法重定向的访问过程结束后，浏览器地址栏中显示的URL会发生改变，由初始的URL地址变成重定向的目标URL；而调用RequestDispatcher.forward 方法的请求转发过程结束后，浏览器地址栏保持初始的URL地址不变。</p></li><li><p>HttpServletResponse.sendRedirect方法对浏览器的请求直接作出响应，响应的结果就是告诉浏览器去重新发出对另外一个URL的 访问请求，这个过程好比有个绰号叫“浏览器”的人写信找张三借钱，张三回信说没有钱，让“浏览器”去找李四借，并将李四现在的通信地址告诉给了“浏览器”。于是，“浏览器”又按张三提供通信地址给李四写信借钱，李四收到信后就把钱汇给了“浏览器”。可见，“浏览器”一共发出了两封信和收到了两次回复， “浏览器”也知道他借到的钱出自李四之手。RequestDispatcher.forward方法在服务器端内部将请求转发给另外一个资源，浏览器只知道发出了请求并得到了响应结果，并不知道在服务器程序内部发生了转发行为。这个过程好比绰号叫“浏览器”的人写信找张三借钱，张三没有钱，于是张三找李四借了一些钱，甚至还可以加上自己的一些钱，然后再将这些钱汇给了“浏览器”。可见，“浏览器”只发 出了一封信和收到了一次回复，他只知道从张三那里借到了钱，并不知道有一部分钱出自李四之手。</p></li><li><p>RequestDispatcher.forward方法的调用者与被调用者之间共享相同的request对象和response对象，它们属于同一个访问请求和响应过程；而HttpServletResponse.sendRedirect方法调用者与被调用者使用各自的request对象和response对象，它们属于两个独立的访问请求和响应过程。对于同一个WEB应用程序的内部资源之间的跳转，特别是跳转之前要对请求进行一些前期预处理，并要使用HttpServletRequest.setAttribute方法传递预处理结果，那就应该使用RequestDispatcher.forward方法。不同WEB应用程序之间的重定向，特别是要重定向到另外一个WEB站点上的资源的情况，都应该使用HttpServletResponse.sendRedirect方法。</p></li><li><p>无论是RequestDispatcher.forward方法，还是HttpServletResponse.sendRedirect方法，在调用它们之前，都不能有内容已经被实际输出到了客户端。如果缓冲区中已经有了一些内容，这些内容将被从缓冲区中。</p></li></ol><h1 id="两种跳转获得对象的方式"><a href="#两种跳转获得对象的方式" class="headerlink" title="两种跳转获得对象的方式"></a>两种跳转获得对象的方式</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//获得转发对象getRequestDispatcher()</span><br><span class="line">HttpServletRequest(httpServletRequest).getRequestDispatcher</span><br><span class="line">ServletContext.getRequestDispatcher();</span><br><span class="line"> </span><br><span class="line">//获得重定向对象sendRedirect()</span><br><span class="line">HttpServletResponse(httpServletResponse).sendRedirect();</span><br></pre></td></tr></table></figure><h1 id="转发和跳转的小结"><a href="#转发和跳转的小结" class="headerlink" title="转发和跳转的小结"></a>转发和跳转的小结</h1><ol><li><p>转发使用的是getRequestDispatcher()方法;重定向使用的是sendRedirect();</p></li><li><p>转发：浏览器URL的地址栏不变。重定向：浏览器URL的地址栏改变；</p></li><li><p>转发是服务器行为，重定向是客户端行为；</p></li><li><p>转发是浏览器只做了一次访问请求。重定向是浏览器做了至少两次的访问请求；</p></li><li><p>转发2次跳转之间传输的信息不会丢失，重定向2次跳转之间传输的信息会丢失（request范围）。</p></li></ol><h1 id="转发和重定向的选择"><a href="#转发和重定向的选择" class="headerlink" title="转发和重定向的选择"></a>转发和重定向的选择</h1><ol><li><p>重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。</p></li><li><p>因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了。</p></li></ol><h1 id="转发和重定向的应用场景"><a href="#转发和重定向的应用场景" class="headerlink" title="转发和重定向的应用场景"></a>转发和重定向的应用场景</h1><p>在上面我已经提到了，转发是要比重定向快，因为重定向需要经过客户端，而转发没有。有时候，采用重定向会更好，若需要重定向到另外一个外部网站，则无法使用转发。另外，重定向还有一个应用场景：避免在用户重新加载页面时两次调用相同的动作。</p><p>例如，当提交产品表单的时候，执行保存的方法将会被调用，并执行相应的动作；这在一个真实的应用程序中，很有可能将表单中的所有产品信息加入到数据库中。但是如果在提交表单后，重新加载页面，执行保存的方法就很有可能再次被调用。同样的产品信息就将可能再次被添加，为了避免这种情况，提交表单后，你可以将用户重定向到一个不同的页面，这样的话，这个网页任意重新加载都没有副作用；</p><p>但是，使用重定向不太方便的地方是，使用它无法将值轻松地传递给目标页面。而采用转发，则可以简单地将属性添加到Model,使得目标视图可以轻松访问。由于重定向经过客户端，所以Model中的一切都会在重定向时丢失。但幸运的是，在Spring3.1版本以后，我们可以通过Flash属性，解决重定向时传值丢失的问题。</p><p>要使用Flash属性，必须在Spring MVC的配置文件中添加一个<annotation-driven>。然后，还必须再方法上添加一个新的参数类型：org.springframework.web.servlet.mvc.support.RedirectAttributes。</annotation-driven></p><hr><p>如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@RequestMapping(value=<span class="string">"saveProduct"</span>,method=RequestMethod.POST)</span><br><span class="line">public String saveProduct(ProductForm productForm,RedirectAttributes redirectAttributes)&#123;</span><br><span class="line"> </span><br><span class="line">     //执行产品保存的业务逻辑等</span><br><span class="line">  </span><br><span class="line">     //传递参数</span><br><span class="line">       redirectAttributes.addFlashAttribute(<span class="string">"message"</span>,<span class="string">"The product is saved successfully"</span>);</span><br><span class="line">   </span><br><span class="line">     //执行重定向</span><br><span class="line">      <span class="built_in">return</span> <span class="string">"redirect:/……"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><code>参考自：</code></p><pre><code>作者：liubin5620 来源：CSDN 原文：https://blog.csdn.net/liubin5620/article/details/79922692 版权声明：本文为博主原创文章，转载请附上博文链接！</code></pre>]]></content>
+      
+      
       <categories>
-        <category>后端小知识</category>
+          
+          <category> 后端小知识 </category>
+          
       </categories>
-      <tags>
-        <tag>页面跳转</tag>
-        <tag>Web开发</tag>
-        <tag>转发</tag>
-        <tag>重定向</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(七)]]></title>
-    <url>%2F2019%2F04%2F14%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%83%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章介绍一下IP数据报的发送和转发过程(主机发送,路由器转发). 主机发送IP数据报的过程 路由器转发IP数据报的过程 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 页面跳转 </tag>
+            
+            <tag> Web开发 </tag>
+            
+            <tag> 转发 </tag>
+            
+            <tag> 重定向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(七)</title>
+      <link href="/2019/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%83/"/>
+      <url>/2019/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%83/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><blockquote><p>  本小章介绍一下IP数据报的发送和转发过程(主机发送,路由器转发).</p></blockquote><h1 id="主机发送IP数据报的过程"><a href="#主机发送IP数据报的过程" class="headerlink" title="主机发送IP数据报的过程"></a>主机发送IP数据报的过程</h1><p><img src="https://upload-images.jianshu.io/upload_images/15186378-cc67dfa7a63d66a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="主机发送IP数据报的过程"></p><h1 id="路由器转发IP数据报的过程"><a href="#路由器转发IP数据报的过程" class="headerlink" title="路由器转发IP数据报的过程"></a>路由器转发IP数据报的过程</h1><p><img src="https://upload-images.jianshu.io/upload_images/15186378-9005f0dddbc0f162.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="路由器转发IP数据报的过程"></p><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(六)]]></title>
-    <url>%2F2019%2F04%2F13%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AD%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦友情提示:今天是难啃的硬骨头，一分钟怕是不行 本小章隆重介绍一下IPv4地址,包括了分类地址,划分子网,构造超网以及定长和变长子网掩码. IPv4地址 IPv4地址就是给Internet上的每一个主机或路由器的每一个接口分配一个在全世界范围是唯一的32比特的标识符 IP地址由互联网名字和数字分配机构ICANN进行分配. 2011年2月3日,互联网号码分配管理局IANA宣布,IPv4地址已经分配完毕. 我国在2014至2015年也逐步停止了向新用户和应用分配IPv4地址,同时全面开展商用部署IPv6. IPv4地址的编址方法经历了三个历史阶段: IPv4地址的点分十进制表示方法 IPv4地址-分类地址 A类地址 B类地址 C类地址 分类地址的小结 IPv4地址-划分子网 划分子网的基本思想 子网掩码 默认的子网掩码 C类网可使用的子网掩码 B类网可使用的子网掩码 A类网可使用的子网掩码 C类网络快速划分子网示例 将网络号省略后便于观察 B类网络快速划分子网示例 只有一个字节的主机号不为0 两个字节的主机号都不为0 A类网络快速划分子网示例 只有一个字节的主机号不为0 有两个字节的主机号不为0 三个字节的主机号都不为0 划分子网的小结 IPv4地址-构造超网1234不知不觉讲到第三阶段了,在讲之前我们回头看看区别吧 *分类地址阶段的IP地址由&#123;网络号，主机号&#125;组成 *划分子网阶段的IP地址由&#123;网络号,子网号,主机号&#125;组成 *而构造超网阶段的IP地址由&#123;网络前缀,主机号&#125;组成 补充一些知识以便理解后面内容 无分类域间路由选择CIDR(Classes Inter-Domain Routing) CIDR消除了传统的A类、B类和C类地址以及子网划分的概念. 路由聚合(构造超网) 构造超网(无分类编址) CIDR使用”斜线记法”,或称CIDR记法,即在IPv4地址后面加上斜线”/“,在斜线后面写上网络前缀所占的比特数量. CIDR实际上是将网络前缀都相同的连续的IP地址组成一个“CIDR地址块” 我们只要知道CIDR地址块中的任何一个地址,就可以回答以下五个问题: 地址块的最小地址 地址块的最大地址 地址块中的地址数量 地址块聚合某类(A,B,C类)网络的数量 地址掩码(也可以继续称为子网掩码) 下面举几个小例子加强理解吧例一: 例二: 例三: 定长的子网掩码和变长的子网掩码 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(六)</title>
+      <link href="/2019/04/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AD/"/>
+      <url>/2019/04/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%85%AD/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code><br><code>友情提示:今天是难啃的硬骨头，一分钟怕是不行</code></p><blockquote><p>  本小章隆重介绍一下IPv4地址,包括了分类地址,划分子网,构造超网以及定长和变长子网掩码.</p></blockquote><h1 id="IPv4地址"><a href="#IPv4地址" class="headerlink" title="IPv4地址"></a>IPv4地址</h1><ul><li>IPv4地址就是给Internet上的每一个主机或路由器的每一个接口<br>分配一个在全世界范围是唯一的<font color="red">32比特的标识符</font> </li><li>IP地址由互联网名字和数字分配机构ICANN进行分配.<ul><li>2011年2月3日,互联网号码分配管理局IANA宣布,IPv4地址已经分配完毕.</li><li>我国在2014至2015年也逐步停止了向新用户和应用分配IPv4地址,同时全面开展商用部署IPv6.</li></ul></li><li>IPv4地址的编址方法经历了三个历史阶段:<br><img src="https://upload-images.jianshu.io/upload_images/15186378-ee3d37ba3250daa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/978/format/webp" alt="IPv4地址的编址方法三个历史阶段"></li></ul><h2 id="IPv4地址的点分十进制表示方法"><a href="#IPv4地址的点分十进制表示方法" class="headerlink" title="IPv4地址的点分十进制表示方法"></a>IPv4地址的点分十进制表示方法</h2><p><img src="https://upload-images.jianshu.io/upload_images/15186378-f002688fe3c3df43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="IPv4地址的点分十进制表示方法"></p><h1 id="IPv4地址-分类地址"><a href="#IPv4地址-分类地址" class="headerlink" title="IPv4地址-分类地址"></a>IPv4地址-分类地址</h1><p><img src="https://upload-images.jianshu.io/upload_images/15186378-2634e011b52ece70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="IPv4地址-分类地址"></p><blockquote><h2 id="A类地址"><a href="#A类地址" class="headerlink" title="A类地址"></a>A类地址</h2><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-6411886a4e636474.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="A类地址"></p><h2 id="B类地址"><a href="#B类地址" class="headerlink" title="B类地址"></a>B类地址</h2><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-d743b0818d70d08e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="B类地址"></p><h2 id="C类地址"><a href="#C类地址" class="headerlink" title="C类地址"></a>C类地址</h2><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-03094c1f5b4e2aad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="C类地址"></p></blockquote><h2 id="分类地址的小结"><a href="#分类地址的小结" class="headerlink" title="分类地址的小结"></a>分类地址的小结</h2><p><img src="https://upload-images.jianshu.io/upload_images/15186378-f9b6cf65d6d59608.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="IPv4地址-分类地址"></p><h1 id="IPv4地址-划分子网"><a href="#IPv4地址-划分子网" class="headerlink" title="IPv4地址-划分子网"></a>IPv4地址-划分子网</h1><blockquote><h2 id="划分子网的基本思想"><a href="#划分子网的基本思想" class="headerlink" title="划分子网的基本思想"></a>划分子网的基本思想</h2><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-1a2a20866c37e7a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="划分子网的基本思想"><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-1f2e238e52691503.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="划分子网的基本思想"></p><h2 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h2><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-9c0f126e6c4f1760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="子网掩码"></p><h3 id="默认的子网掩码"><a href="#默认的子网掩码" class="headerlink" title="默认的子网掩码"></a>默认的子网掩码</h3><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-c20e1dc3f106a034.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="默认的子网掩码"></p><h3 id="C类网可使用的子网掩码"><a href="#C类网可使用的子网掩码" class="headerlink" title="C类网可使用的子网掩码"></a>C类网可使用的子网掩码</h3><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-28f6a84f16996340.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="C类网可使用的子网掩码"></p><h3 id="B类网可使用的子网掩码"><a href="#B类网可使用的子网掩码" class="headerlink" title="B类网可使用的子网掩码"></a>B类网可使用的子网掩码</h3><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-b9bdd37b8019460e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="B类网可使用的子网掩码"></p><h3 id="A类网可使用的子网掩码"><a href="#A类网可使用的子网掩码" class="headerlink" title="A类网可使用的子网掩码"></a>A类网可使用的子网掩码</h3><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-0ffc759c97e40d80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="A类网可使用的子网掩码"></p><hr><h3 id="C类网络快速划分子网示例"><a href="#C类网络快速划分子网示例" class="headerlink" title="C类网络快速划分子网示例"></a>C类网络快速划分子网示例</h3><p>   <img src="https://upload-images.jianshu.io/upload_images/15186378-34f033c731d7cd8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="C类网络快速划分子网示例"><br>   <code>将网络号省略后便于观察</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-73abbe6b49ac4494.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="C类网络快速划分子网示例"></p><hr><h3 id="B类网络快速划分子网示例"><a href="#B类网络快速划分子网示例" class="headerlink" title="B类网络快速划分子网示例"></a>B类网络快速划分子网示例</h3><p>   <code>只有一个字节的主机号不为0</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-c8df4f3eac82e2e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="B类网络快速划分子网示例"><br>   <code>两个字节的主机号都不为0</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-abc01c1a680160e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="B类网络快速划分子网示例"></p><hr><h3 id="A类网络快速划分子网示例"><a href="#A类网络快速划分子网示例" class="headerlink" title="A类网络快速划分子网示例"></a>A类网络快速划分子网示例</h3><p>   <code>只有一个字节的主机号不为0</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-c2047bddae6c4098.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="A类网络快速划分子网示例"><br>   <code>有两个字节的主机号不为0</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-a8d689758f9934e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="A类网络快速划分子网示例"><br>   <code>三个字节的主机号都不为0</code><br>   <img src="https://upload-images.jianshu.io/upload_images/15186378-799df230c6a13b0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="A类网络快速划分子网示例"></p></blockquote><h2 id="划分子网的小结"><a href="#划分子网的小结" class="headerlink" title="划分子网的小结"></a>划分子网的小结</h2><p><img src="https://upload-images.jianshu.io/upload_images/15186378-eb32c5c3b2879e2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="IPv4地址-划分子网"></p><h1 id="IPv4地址-构造超网"><a href="#IPv4地址-构造超网" class="headerlink" title="IPv4地址-构造超网"></a>IPv4地址-构造超网</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">不知不觉讲到第三阶段了,在讲之前我们回头看看区别吧</span><br><span class="line">    *分类地址阶段的IP地址由&#123;网络号，主机号&#125;组成</span><br><span class="line">    *划分子网阶段的IP地址由&#123;网络号,子网号,主机号&#125;组成</span><br><span class="line">    *而构造超网阶段的IP地址由&#123;网络前缀,主机号&#125;组成</span><br></pre></td></tr></table></figure><blockquote><p><font color="red">补充一些知识以便理解后面内容</font></p><ul><li>无分类域间路由选择CIDR(Classes Inter-Domain Routing)</li><li>CIDR消除了传统的A类、B类和C类地址以及子网划分的概念.</li><li>路由聚合(构造超网)</li></ul></blockquote><hr><blockquote><h2 id="构造超网-无分类编址"><a href="#构造超网-无分类编址" class="headerlink" title="构造超网(无分类编址)"></a>构造超网(无分类编址)</h2><ul><li>CIDR使用”斜线记法”,或称CIDR记法,即在IPv4地址后面加上斜线”/“,在斜线后面写上网络前缀所占的比特数量.<br><img src="https://upload-images.jianshu.io/upload_images/15186378-0ee2ce8d2078f72c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/870/format/webp" alt="CIDR记法"></li><li>CIDR实际上是将<font color="red">网络前缀都相同的连续的IP地址</font>组成一个<font color="red">“CIDR地址块”</font></li><li>我们只要知道CIDR地址块中的任何一个地址,就可以回答以下五个问题:<ul><li>地址块的最小地址</li><li>地址块的最大地址</li><li>地址块中的地址数量</li><li>地址块聚合某类(A,B,C类)网络的数量</li><li>地址掩码(也可以继续称为子网掩码)</li></ul></li></ul></blockquote><p><code>下面举几个小例子加强理解吧</code><br>例一:<br><img src="https://upload-images.jianshu.io/upload_images/15186378-08e4f667aec2c2fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="构造超网(无分类编址)例子1"></p><p>例二:<br><img src="https://upload-images.jianshu.io/upload_images/15186378-ac4d3c51a52fbb7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="构造超网(无分类编址)例子2"></p><p>例三:<br><img src="https://upload-images.jianshu.io/upload_images/15186378-8adb380bafce425c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="构造超网(无分类编址)例子3"></p><hr><h1 id="定长的子网掩码和变长的子网掩码"><a href="#定长的子网掩码和变长的子网掩码" class="headerlink" title="定长的子网掩码和变长的子网掩码"></a>定长的子网掩码和变长的子网掩码</h1><p><img src="https://upload-images.jianshu.io/upload_images/15186378-f4e17f6882cd4477.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="定长的子网掩码和变长的子网掩码"></p><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(五)]]></title>
-    <url>%2F2019%2F04%2F13%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%94%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章简单介绍一下虚拟局域网VLAN 虚拟局域网出现背景扩展以太网的同时也扩大了广播域 交换机是数据链路层的连接设备. 使用一个或多个交换机互联起来的交换式以太网,其所有站点都属于同一个广播域. 随着交换式以太网规模的扩大,广播域相应扩大. 巨大的广播域并不是一件好事,它会带来很多问题: 产生广播风暴 难以管理和维护 潜在的安全问题 网络中会频繁出现广播信息 使用TCP/IP协议栈时,很多协议都会使用广播(重要) ARP: 地址请求协议,(已知IP地址,找出其相应的MAC地址) RIP: 路由信息协议(一种小型的,内部路由协议) DHCP: 动态主机配置协议(用于自动配置IP地址) NetBEUI: Windows下使用的广播型协议(了解) IPX/SPX: Novell网络的协议栈(了解) AppleTalk: Apple公司的网络协议栈(了解) 如何分割广播域？ 使用路由器可以隔离广播域 路由器的成本较高 虚拟局域网VLAN技术应运而生 虚拟局域网VLAN 虚拟局域网VLAN(Virtual Local Area Network) 是一种将局域网内的设备划分成与物理位置无关的逻辑组的技术, 这些逻辑组具有某些共同的需求. 例如 如何实现VLAN? 交换机上生成的各VLAN(逻辑组)是互不相通的. 实现VLAN间通信的方法: 使用路由器 使用三层交换机 VLAN的实现机制主要实现以下两部分内容功能,这里简单介绍不展开详细讲 (1) IEEE 802.1Q帧: 在以太网的原地址字段和类型字段之间插入4字节的VLAN标记(tag)字段,俗称”打标签” (2) 交换机的端口类型: Access Trunk Hybrid(华为私有) 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(五)</title>
+      <link href="/2019/04/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%94/"/>
+      <url>/2019/04/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%94/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><blockquote><p>  本小章简单介绍一下虚拟局域网VLAN</p></blockquote><h1 id="虚拟局域网出现背景"><a href="#虚拟局域网出现背景" class="headerlink" title="虚拟局域网出现背景"></a>虚拟局域网出现背景</h1><h2 id="扩展以太网的同时也扩大了广播域"><a href="#扩展以太网的同时也扩大了广播域" class="headerlink" title="扩展以太网的同时也扩大了广播域"></a>扩展以太网的同时也扩大了广播域</h2><ul><li>交换机是数据链路层的连接设备.</li><li>使用一个或多个交换机互联起来的交换式以太网,其所有站点都属于同一个广播域.</li><li>随着交换式以太网规模的扩大,广播域相应扩大.</li><li>巨大的广播域并不是一件好事,它会带来很多问题:<ul><li>产生广播风暴</li><li>难以管理和维护</li><li>潜在的安全问题</li></ul></li></ul><h2 id="网络中会频繁出现广播信息"><a href="#网络中会频繁出现广播信息" class="headerlink" title="网络中会频繁出现广播信息"></a>网络中会频繁出现广播信息</h2><ul><li>使用TCP/IP协议栈时,很多协议都会使用广播(重要)<ul><li>ARP: 地址请求协议,(已知IP地址,找出其相应的MAC地址)</li><li>RIP: 路由信息协议(一种小型的,内部路由协议)</li><li>DHCP: 动态主机配置协议(用于自动配置IP地址)</li></ul></li><li>NetBEUI: Windows下使用的广播型协议(了解)</li><li>IPX/SPX: Novell网络的协议栈(了解)</li><li>AppleTalk: Apple公司的网络协议栈(了解)</li></ul><h2 id="如何分割广播域？"><a href="#如何分割广播域？" class="headerlink" title="如何分割广播域？"></a>如何分割广播域？</h2><ul><li>使用路由器可以隔离广播域<ul><li>路由器的成本较高</li></ul></li><li>虚拟局域网VLAN技术应运而生</li></ul><h1 id="虚拟局域网VLAN"><a href="#虚拟局域网VLAN" class="headerlink" title="虚拟局域网VLAN"></a>虚拟局域网VLAN</h1><blockquote><p>  虚拟局域网VLAN(Virtual Local Area Network)</p><pre><code>是一种将局域网内的设备划分成与物理位置无关的逻辑组的技术,这些逻辑组具有某些共同的需求.</code></pre><p>  例如</p><p>  <img src="https://upload-images.jianshu.io/upload_images/15186378-7d5ae34dbd129e05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="虚拟局域网VLAN"></p></blockquote><h2 id="如何实现VLAN"><a href="#如何实现VLAN" class="headerlink" title="如何实现VLAN?"></a>如何实现VLAN?</h2><p><img src="https://upload-images.jianshu.io/upload_images/15186378-63ecb074537fded0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/656/format/webp" alt="实现VLAN"></p><ul><li>交换机上生成的各VLAN(逻辑组)是互不相通的.</li><li>实现VLAN间通信的方法:<ul><li>使用路由器</li><li>使用三层交换机</li></ul></li></ul><h2 id="VLAN的实现机制"><a href="#VLAN的实现机制" class="headerlink" title="VLAN的实现机制"></a>VLAN的实现机制</h2><p><code>主要实现以下两部分内容功能,这里简单介绍不展开详细讲</code><br>    (1) IEEE 802.1Q帧:</p><ul><li>在以太网的原地址字段和类型字段之间插入4字节的VLAN标记(tag)字段,俗称”打标签”</li></ul><p>   (2) 交换机的端口类型:</p><ul><li>Access</li><li>Trunk</li><li>Hybrid(华为私有)</li></ul><p><img src="https://upload-images.jianshu.io/upload_images/15186378-e17b508116ce21e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="交换机的端口类型"></p><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(四)]]></title>
-    <url>%2F2019%2F04%2F12%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦这篇例外呢，难度挺大的，想着分两篇发，但还是一鼓作气吧，吃得苦中苦 本小章简单介绍一下集线器和交换机的区别， 以及交换机的内部工作原理(重点). 集线器和交换机的区别 以太网交换机的自学习算法以太网交换机的转发原理 交换机工作在数据链路层(也包括物理层) 交换机收到数据帧后，根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理. 明确的转发:交换机知道应当从哪个/哪些接口转发该帧(单播，多播，广播). 盲目的转发:交换机不知道应当从哪个端口转发帧,只能将其通过除进入交换机的接口外的其他所有接口转发(也称为泛洪). 明确的丢弃:交换机知道不应该转发该帧，将其丢弃. 交换机是一种即插即用设备,其内部的帧交换表是通过自学习算法自动地逐渐建立起来的. 登记MAC地址与接口号:提取帧的源mac地址,将其与该帧进入本交换机接口的接口号一起作为一个条目写入交换机的帧交换表 转发帧根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理(明确转发,盲目转发,丢弃). 帧交换表中每个条目都有自己的有效时间,到期删除:原因:12交换机的接口更换另一台主机主机更换网络适配器(网卡) 交换机的生成树协议STP-功能介绍 STP出现的背景在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性, 使得某段网络链路出现故障时整个网络仍可通信, 但增加冗余链路形成了网络环路, 网络环路所带来的问题： 1. 广播风暴(大量消耗网络资源，使得网络无法正常转发其他数据帧) 2. 主机收到重复的广播帧 3. 交换机的帧交换表震荡(漂移) 使用生成树协议STP解决网络环路问题以太网交换机使用生成树协议STP(Spanning Tree Protocol), 可以在提高网络可靠性的同时又避免网络环路带来的各种问题. 1. 不论交换机之间采用怎样的物理连接,交换机都能够自动计算并构建一个 逻辑上没有环路的网络,其逻辑拓扑结构必须是树型的(无逻辑环路). 2. 最终生成的树型逻辑拓扑要确保联通整个网络的每一个部分. 3. 当首次连接交换机或网络物理拓扑发生变化时(有可能是认为改变或故障), 交换机都将进行生成树的重新计算. 生成树算法STA生成树算法STA(Spanning Tree Algorithm)是生成树协议STP的核心. 它的实现目标是: 在包含有物理环路的网络中,构建出一个能够连通全网各节点的树型无环逻辑拓扑. 生成树算法的三个步骤: 1. &quot;选举&quot;根交换机 2. &quot;选举&quot;根端口 3. &quot;选举&quot;制定端口并阻塞备用端口 注意 “选举”根交换机 “选举”根端口 “选举”制定端口并阻塞备用端口 大致了解一下步骤吧以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(四)</title>
+      <link href="/2019/04/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B/"/>
+      <url>/2019/04/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%9B%9B/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code><br><code>这篇例外呢，难度挺大的，想着分两篇发，但还是一鼓作气吧，吃得苦中苦</code></p><blockquote><p>  本小章简单介绍一下集线器和交换机的区别，<br>  以及交换机的内部工作原理(重点).</p></blockquote><h1 id="集线器和交换机的区别"><a href="#集线器和交换机的区别" class="headerlink" title="集线器和交换机的区别"></a>集线器和交换机的区别</h1><p><img src="/images/计算机网络/四/01.png" alt="集线器和交换机的区别"></p><h1 id="以太网交换机的自学习算法"><a href="#以太网交换机的自学习算法" class="headerlink" title="以太网交换机的自学习算法"></a>以太网交换机的自学习算法</h1><h2 id="以太网交换机的转发原理"><a href="#以太网交换机的转发原理" class="headerlink" title="以太网交换机的转发原理"></a>以太网交换机的转发原理</h2><ul><li>交换机工作在数据链路层(也包括物理层)</li><li>交换机收到数据帧后，根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理.<ul><li>明确的转发:<br><code>交换机知道应当从哪个/哪些接口转发该帧(单播，多播，广播).</code></li><li>盲目的转发:<br><code>交换机不知道应当从哪个端口转发帧,只能将其通过除进入交换机的接口外的其他所有接口转发(也称为泛洪).</code></li><li>明确的丢弃:<br><code>交换机知道不应该转发该帧，将其丢弃.</code></li></ul></li><li>交换机是一种即插即用设备,其内部的帧交换表是通过自学习算法自动地逐渐建立起来的.<ol><li>登记MAC地址与接口号:<br><code>提取帧的源mac地址,将其与该帧进入本交换机接口的接口号一起作为一个条目写入交换机的帧交换表</code> </li><li>转发帧<br><code>根据帧的目的MAC地址和交换机内部的帧交换表对帧进行处理(明确转发,盲目转发,丢弃).</code></li><li>帧交换表中每个条目都有自己的有效时间,到期删除:<figure class="highlight bash"><figcaption><span>原因:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">交换机的接口更换另一台主机</span><br><span class="line">主机更换网络适配器(网卡)</span><br></pre></td></tr></table></figure></li></ol></li></ul><h2 id="交换机的生成树协议STP-功能介绍"><a href="#交换机的生成树协议STP-功能介绍" class="headerlink" title="交换机的生成树协议STP-功能介绍"></a>交换机的生成树协议STP-功能介绍</h2><blockquote><h3 id="STP出现的背景"><a href="#STP出现的背景" class="headerlink" title="STP出现的背景"></a>STP出现的背景</h3><pre><code>在实际的网络拓扑中,我们会添加冗余链路以提高网络可靠性,使得某段网络链路出现故障时整个网络仍可通信,但增加冗余链路形成了网络环路,网络环路所带来的问题：    1. 广播风暴(大量消耗网络资源，使得网络无法正常转发其他数据帧)    2. 主机收到重复的广播帧    3. 交换机的帧交换表震荡(漂移)</code></pre><h3 id="使用生成树协议STP解决网络环路问题"><a href="#使用生成树协议STP解决网络环路问题" class="headerlink" title="使用生成树协议STP解决网络环路问题"></a>使用生成树协议STP解决网络环路问题</h3><pre><code>以太网交换机使用生成树协议STP(Spanning Tree Protocol),可以在提高网络可靠性的同时又避免网络环路带来的各种问题.     1. 不论交换机之间采用怎样的物理连接,交换机都能够自动计算并构建一个       逻辑上没有环路的网络,其逻辑拓扑结构必须是树型的(无逻辑环路).    2. 最终生成的树型逻辑拓扑要确保联通整个网络的每一个部分.    3. 当首次连接交换机或网络物理拓扑发生变化时(有可能是认为改变或故障),       交换机都将进行生成树的重新计算.</code></pre><h3 id="生成树算法STA"><a href="#生成树算法STA" class="headerlink" title="生成树算法STA"></a>生成树算法STA</h3><pre><code>生成树算法STA(Spanning Tree Algorithm)是生成树协议STP的核心.它的实现目标是: 在包含有物理环路的网络中,构建出一个能够连通全网各节点的树型无环逻辑拓扑.    生成树算法的三个步骤:        1. &quot;选举&quot;根交换机        2. &quot;选举&quot;根端口        3. &quot;选举&quot;制定端口并阻塞备用端口</code></pre><p>  注意<br>  <img src="/images/计算机网络/四/02.png" alt="BPDU"></p><ol><li><p>“选举”根交换机<br><img src="/images/计算机网络/四/03.png" alt="&quot;选举&quot;根交换机"></p></li><li><p>“选举”根端口<br><img src="/images/计算机网络/四/04.png" alt="&quot;选举&quot;根端口"></p></li><li><p>“选举”制定端口并阻塞备用端口<br><img src="/images/计算机网络/四/05.png" alt="&quot;选举&quot;制定端口并阻塞备用端口"></p></li></ol></blockquote><p><code>大致了解一下步骤吧</code><br><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(三)]]></title>
-    <url>%2F2019%2F04%2F10%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章简单介绍一下MAC地址，IP地址，以及ARP协议 计算机网络的寻址问题MAC地址MAC地址的作用 MAC地址的格式 标准表示法：XX-XX-XX-XX-XX-XX 例如，在Windows下00-0C-CF-93-8C-92 其他表示法：1.XX:XX:XX:XX:XX:XX 例如，在Linux,ios,Android下 00:0C:CF:93:8C:92 2.XXXX.XXXX.XXXX 例如，在Cisco Packet Tracer下000C.CF93.8C92 MAC地址的发送顺序12345字节发送顺序： 第一字节 → 第六字节字节内的比特发送顺序： b0 → b7 IP地址IP地址的作用 IP地址是互联网上各主机使用的地址，标识两部分信息：网络编号： 标识互联网上数以百万的网络 主机编号： 标识同意网络上不同的主机 很显然，之前介绍的MAC地址不具有这样的功能。12如果只是一个单独的网络，不连入互联网，可以只使用MAC地址。如果主机所在的网络连入互联网，则IP地址和MAC地址都使用。 从五层体系结构看IP地址与MAC地址 下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况 具体的文字描述(可以加深理解转发过程) IP地址与MAC地址的关系 地址解析协议ARP1.在ARP高速缓存表中查找目的IP地址对应的MAC地址(因为在数据链路层需要封装该信息，如找不到则跳到第二步)2.广播发送ARP请求3.单播发送ARP响应4.ARP高速缓存表的更新(动态条目和静态条目)5.ARP作用范围：一段链路或同一网络内 补充一下内容吧,CSMA/CD协议没必要另写一章咯12345CSMA/CD曾经用于各种总线结构以太网和双绞线以太网的早起版本中.现在的以太网基于交换机和全双工连接，不会有碰撞，因此没必要使用CSMA/CD. CSMA/CD协议 其实不是很重要，初略记记英文单词就够了 载波监听多点接入/碰撞检测 Carrier Sense Multiple Access with Collision Detection 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(三)</title>
+      <link href="/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89/"/>
+      <url>/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%B8%89/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><blockquote><p>  本小章简单介绍一下MAC地址，IP地址，以及ARP协议</p></blockquote><h1 id="计算机网络的寻址问题"><a href="#计算机网络的寻址问题" class="headerlink" title="计算机网络的寻址问题"></a>计算机网络的寻址问题</h1><h2 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><h3 id="MAC地址的作用"><a href="#MAC地址的作用" class="headerlink" title="MAC地址的作用"></a>MAC地址的作用</h3><p><img src="/images/计算机网络/三/01.png" alt="MAC作用"></p><h3 id="MAC地址的格式"><a href="#MAC地址的格式" class="headerlink" title="MAC地址的格式"></a>MAC地址的格式</h3><p><img src="/images/计算机网络/三/02.png" alt="MAC格式"></p><blockquote><p>标准表示法：XX-XX-XX-XX-XX-XX</p><h4 id="例如，在Windows下"><a href="#例如，在Windows下" class="headerlink" title="例如，在Windows下"></a>例如，在<code>Windows</code>下</h4><pre><code>00-0C-CF-93-8C-92</code></pre></blockquote><hr><blockquote><p>其他表示法：<br>1.XX:XX:XX:XX:XX:XX</p><h4 id="例如，在Linux-ios-Android下"><a href="#例如，在Linux-ios-Android下" class="headerlink" title="例如，在Linux,ios,Android下"></a>例如，在<code>Linux</code>,<code>ios</code>,<code>Android</code>下</h4><p>   00:0C:CF:93:8C:92</p><p>2.XXXX.XXXX.XXXX</p><h4 id="例如，在Cisco-Packet-Tracer下"><a href="#例如，在Cisco-Packet-Tracer下" class="headerlink" title="例如，在Cisco Packet Tracer下"></a>例如，在<code>Cisco Packet Tracer</code>下</h4><pre><code>000C.CF93.8C92</code></pre></blockquote><h3 id="MAC地址的发送顺序"><a href="#MAC地址的发送顺序" class="headerlink" title="MAC地址的发送顺序"></a>MAC地址的发送顺序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">字节发送顺序：</span><br><span class="line">    第一字节  →  第六字节</span><br><span class="line"></span><br><span class="line">字节内的比特发送顺序：</span><br><span class="line">    b0  →  b7</span><br></pre></td></tr></table></figure><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><h3 id="IP地址的作用"><a href="#IP地址的作用" class="headerlink" title="IP地址的作用"></a>IP地址的作用</h3><blockquote><h3 id="IP地址是互联网上各主机使用的地址，标识两部分信息："><a href="#IP地址是互联网上各主机使用的地址，标识两部分信息：" class="headerlink" title="IP地址是互联网上各主机使用的地址，标识两部分信息："></a>IP地址是互联网上各主机使用的地址，标识两部分信息：</h3><pre><code>网络编号：    标识互联网上数以百万的网络主机编号：       标识同意网络上不同的主机</code></pre></blockquote><p>很显然，之前介绍的MAC地址不具有这样的功能。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果只是一个单独的网络，不连入互联网，可以只使用MAC地址。</span><br><span class="line">如果主机所在的网络连入互联网，则IP地址和MAC地址都使用。</span><br></pre></td></tr></table></figure></p><h2 id="从五层体系结构看IP地址与MAC地址"><a href="#从五层体系结构看IP地址与MAC地址" class="headerlink" title="从五层体系结构看IP地址与MAC地址"></a>从五层体系结构看IP地址与MAC地址</h2><p><img src="/images/计算机网络/三/03.png" alt="从五层体系结构看IP地址与MAC地址"></p><h2 id="下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况"><a href="#下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况" class="headerlink" title="下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况"></a>下面我们用一张图来看看数据包转发过程中IP地址与MAC地址的变化情况</h2><p><img src="/images/计算机网络/三/04.png" alt="数据包转发过程中IP地址与MAC地址的变化情况"></p><h3 id="具体的文字描述-可以加深理解转发过程"><a href="#具体的文字描述-可以加深理解转发过程" class="headerlink" title="具体的文字描述(可以加深理解转发过程)"></a>具体的文字描述(可以加深理解转发过程)</h3><p><img src="/images/计算机网络/三/05.png" alt="数据包转发过程"></p><h2 id="IP地址与MAC地址的关系"><a href="#IP地址与MAC地址的关系" class="headerlink" title="IP地址与MAC地址的关系"></a>IP地址与MAC地址的关系</h2><p><img src="/images/计算机网络/三/06.png" alt="IP地址与MAC地址的关系"></p><h2 id="地址解析协议ARP"><a href="#地址解析协议ARP" class="headerlink" title="地址解析协议ARP"></a>地址解析协议ARP</h2><p>1.在ARP高速缓存表中查找目的IP地址对应的MAC地址(因为在数据链路层需要封装该信息，如找不到则跳到第二步)<br>2.广播发送ARP请求<br>3.单播发送ARP响应<br>4.ARP高速缓存表的更新(动态条目和静态条目)<br>5.ARP作用范围：一段链路或同一网络内</p><hr><hr><p><em>补充一下内容吧,CSMA/CD协议没必要另写一章咯</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CSMA/CD曾经用于各种总线结构以太网</span><br><span class="line">和双绞线以太网的早起版本中.</span><br><span class="line"></span><br><span class="line">现在的以太网基于交换机和全双工连接，</span><br><span class="line">不会有碰撞，因此没必要使用CSMA/CD.</span><br></pre></td></tr></table></figure></p><blockquote><h2 id="CSMA-CD协议"><a href="#CSMA-CD协议" class="headerlink" title="CSMA/CD协议"></a>CSMA/CD协议</h2><p>  <code>其实不是很重要，初略记记英文单词就够了</code></p><pre><code>载波监听多点接入/碰撞检测Carrier Sense Multiple Access with Collision Detection</code></pre><p><img src="/images/计算机网络/三/07.png" alt="CSMA/CD协议"></p></blockquote><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(二)]]></title>
-    <url>%2F2019%2F04%2F10%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 计算机网络体系结构中的专用术语实体1任何可发送或接受信息的硬件或软件进程 对等实体1收发双方相同层次中的实体 协议1控制两个对等实体进行逻辑通信的规则的集合 协议的三要素 语法：定义所交换信息的格式 数据链路层帧格式举例：PPP帧，以太网MAC帧，802.11局域网数据帧 网络层数据包格式举例：IP数据报，ARP，ICMP，RIP，OSPF，BGP报文 运输层数据包格式举例：UDP用户数据报，TCP报文段 语义：定义收发双方所要完成的操作 同步：定义收发双方的时序关系 服务12在协议的控制下，两个对等实体间的逻辑通信使得本层能够向上一层提供服务。要实现本层协议，还需要使用下面一层提供的服务。 服务访问点1在同一系统中相邻两层的实体交换信息的逻辑接口，用于区分不同的服务类型 例如: 链路层的服务访问点为帧的“类型”字段 网络层的服务访问点为IP数据报首部中的“协议”字段 运输层的服务访问点为端口号 服务原语1上层使用下层所提供的服务必须通过与下层交换一些命令，这些命令称为服务原语 协议数据单元PDU1对等层次之间传送的数据包称为该层的协议数据单元 服务数据单元SDU1同一系统内，层与层之间交换的数据包称为服务数据单元 TCP/IP的四层体系结构 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(二)</title>
+      <link href="/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C/"/>
+      <url>/2019/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E4%BA%8C/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><h1 id="计算机网络体系结构中的专用术语"><a href="#计算机网络体系结构中的专用术语" class="headerlink" title="计算机网络体系结构中的专用术语"></a>计算机网络体系结构中的专用术语</h1><h2 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">任何可发送或接受信息的硬件或软件进程</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="对等实体"><a href="#对等实体" class="headerlink" title="对等实体"></a>对等实体</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">收发双方相同层次中的实体</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/15186378-9986c05d8f6b0205.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/880/format/webp" alt="对等实体"></p><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">控制两个对等实体进行逻辑通信的规则的集合</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/02.png" alt="协议"></p><h2 id="协议的三要素"><a href="#协议的三要素" class="headerlink" title="协议的三要素"></a>协议的三要素</h2><blockquote><p>语法：定义所交换信息的格式</p><pre><code>数据链路层帧格式举例：PPP帧，以太网MAC帧，802.11局域网数据帧网络层数据包格式举例：IP数据报，ARP，ICMP，RIP，OSPF，BGP报文运输层数据包格式举例：UDP用户数据报，TCP报文段</code></pre></blockquote><blockquote><p>语义：定义收发双方所要完成的操作</p></blockquote><blockquote><p>同步：定义收发双方的时序关系</p><p>   <img src="/images/计算机网络/二/03.png" alt="同步"></p></blockquote><h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在协议的控制下，两个对等实体间的逻辑通信使得本层能够向上一层提供服务。</span><br><span class="line">要实现本层协议，还需要使用下面一层提供的服务。</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/04.png" alt="服务"></p><h2 id="服务访问点"><a href="#服务访问点" class="headerlink" title="服务访问点"></a>服务访问点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在同一系统中相邻两层的实体交换信息的逻辑接口，用于区分不同的服务类型</span><br></pre></td></tr></table></figure><blockquote><p>例如:</p></blockquote><pre><code>链路层的服务访问点为帧的“类型”字段网络层的服务访问点为IP数据报首部中的“协议”字段运输层的服务访问点为端口号</code></pre><h2 id="服务原语"><a href="#服务原语" class="headerlink" title="服务原语"></a>服务原语</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上层使用下层所提供的服务必须通过与下层交换一些命令，这些命令称为服务原语</span><br></pre></td></tr></table></figure><h2 id="协议数据单元PDU"><a href="#协议数据单元PDU" class="headerlink" title="协议数据单元PDU"></a>协议数据单元PDU</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对等层次之间传送的数据包称为该层的协议数据单元</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/05.png" alt="PDU"></p><h2 id="服务数据单元SDU"><a href="#服务数据单元SDU" class="headerlink" title="服务数据单元SDU"></a>服务数据单元SDU</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同一系统内，层与层之间交换的数据包称为服务数据单元</span><br></pre></td></tr></table></figure><p><img src="/images/计算机网络/二/06.png" alt="SDU"></p><h1 id="TCP-IP的四层体系结构"><a href="#TCP-IP的四层体系结构" class="headerlink" title="TCP/IP的四层体系结构"></a>TCP/IP的四层体系结构</h1><p><img src="/images/计算机网络/二/07.png" alt="TCP/IP的四层体系结构"></p><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计算机网络知识巩固(一)]]></title>
-    <url>%2F2019%2F04%2F09%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA%2F</url>
-    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 计算机网络体系结构概述将实现互联网所面临的主要问题划分层次： 通过应用进程间的交互来完成特定网络应用 &emsp;&emsp;&emsp;应用层（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P） 主机间的进程通信 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;运输层1.将来自网络的数据包交给哪个应用进程(端口号)2.可靠传输服务和不可靠传输服务 数据包如何从原网络传到目的网络 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;网络层1.对各网络的标识(IP地址的网络号部分)2.数据包的路由(路由器的路由选择协议和转发机制) 数据包如何在一段链路上传输 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据链路层1.对主机和路由器的网络接口的标识(MAC地址)2.广播信道和点对点信道3.差错检测和可靠传输 主机，路由器等网络设备如何接入网络 &emsp;&emsp;&emsp;&emsp;&emsp;物理层1.使用何种的新号标识比特0和1(新号的调制和编码)2.使用何种物理接口(机械尺寸，引脚数量和排列) 分层思想 &emsp;OSI/RM体系结构 &emsp; &emsp;TCP/IP体系结构 &emsp; 五层协议体系结构 &emsp; 7 &emsp;&emsp;应用层 &emsp; 4 &emsp;应用层 &emsp; 5 &emsp;应用层 &emsp; &emsp; 6 &emsp;&emsp;表示层 &emsp; (HTTP,FTP,SMTP等) &emsp; &emsp; &emsp; &emsp; 5 &emsp;&emsp;会话层 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 4 &emsp;&emsp;运输层 &emsp; 3 &emsp;运输层(TCP或UDP) &emsp; 4 &emsp;运输层 &emsp; &emsp; 3 &emsp;&emsp;网络层 &emsp; 2 &emsp;网际层IP &emsp; 3 &emsp;网络层 &emsp; &emsp; &emsp;2 &emsp;数据链路层 &emsp; &emsp;1 &emsp;网络接口层 &emsp; &emsp;&emsp;2 &emsp;数据链路层 &emsp; &emsp; 1 &emsp;&emsp;物理层 &emsp; &emsp; &emsp; 1 &emsp;物理层 &emsp; 以上知识源于B站点击此处跳转]]></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络知识巩固(一)</title>
+      <link href="/2019/04/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA/"/>
+      <url>/2019/04/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA/</url>
+      
+        <content type="html"><![CDATA[<p><code>每天花一分钟看一篇就够啦</code></p><h1 id="计算机网络体系结构概述"><a href="#计算机网络体系结构概述" class="headerlink" title="计算机网络体系结构概述"></a>计算机网络体系结构概述</h1><h2 id="将实现互联网所面临的主要问题划分层次："><a href="#将实现互联网所面临的主要问题划分层次：" class="headerlink" title="将实现互联网所面临的主要问题划分层次："></a>将实现互联网所面临的主要问题划分层次：</h2><hr><ul><li>通过应用进程间的交互来完成特定网络应用    &emsp;&emsp;&emsp;<code>应用层</code><br>（DNS,DHCP,HTTP,SMTP,TELNET,FTP,P2P）<a id="more"></a></li></ul><hr><ul><li>主机间的进程通信  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>运输层</code><br>1.将来自网络的数据包交给哪个应用进程(端口号)<br>2.可靠传输服务和不可靠传输服务</li></ul><hr><ul><li>数据包如何从原网络传到目的网络  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>网络层</code><br>1.对各网络的标识(IP地址的网络号部分)<br>2.数据包的路由(路由器的路由选择协议和转发机制)</li></ul><hr><ul><li>数据包如何在一段链路上传输  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>数据链路层</code><br>1.对主机和路由器的网络接口的标识(MAC地址)<br>2.广播信道和点对点信道<br>3.差错检测和可靠传输</li></ul><hr><ul><li>主机，路由器等网络设备如何接入网络  &emsp;&emsp;&emsp;&emsp;&emsp;<code>物理层</code><br>1.使用何种的新号标识比特0和1(新号的调制和编码)<br>2.使用何种物理接口(机械尺寸，引脚数量和排列)</li></ul><hr><h1 id="分层思想"><a href="#分层思想" class="headerlink" title="分层思想"></a>分层思想</h1><table><thead><tr><th style="text-align:left"></th><th style="text-align:center">&emsp;OSI/RM体系结构</th><th style="text-align:center">&emsp;</th><th style="text-align:center">&emsp;TCP/IP体系结构</th><th style="text-align:center">&emsp;</th><th style="text-align:center">五层协议体系结构</th><th style="text-align:right"></th></tr></thead><tbody><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">7 &emsp;&emsp;应用层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">4 &emsp;应用层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">5 &emsp;应用层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">6 &emsp;&emsp;表示层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">(HTTP,FTP,SMTP等)</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">5 &emsp;&emsp;会话层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">4 &emsp;&emsp;运输层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">3 &emsp;运输层(TCP或UDP)</td><td style="text-align:center">&emsp;</td><td style="text-align:center">4 &emsp;运输层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">3 &emsp;&emsp;网络层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">2 &emsp;网际层IP</td><td style="text-align:center">&emsp;</td><td style="text-align:center">3 &emsp;网络层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">&emsp;2 &emsp;数据链路层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;1 &emsp;网络接口层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;&emsp;2 &emsp;数据链路层</td><td style="text-align:right">&emsp;</td></tr><tr><td style="text-align:left">&emsp;</td><td style="text-align:center">1 &emsp;&emsp;物理层</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">&emsp;</td><td style="text-align:center">1 &emsp;物理层</td><td style="text-align:right">&emsp;</td></tr></tbody></table><p><code>以上知识源于B站</code><br><a href="https://www.bilibili.com/video/av34135819" target="_blank" rel="noopener">点击此处跳转</a></p>]]></content>
+      
+      
       <categories>
-        <category>计算机网络</category>
+          
+          <category> 计算机网络 </category>
+          
       </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>B站视频</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F04%2F02%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[My First Day In Github Pages]]></title>
-    <url>%2F2019%2F03%2F31%2FMy-First-Day-In-Github-Pages%2F</url>
-    <content type="text"></content>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> B站视频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/04/02/hello-world/"/>
+      <url>/2019/04/02/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><a id="more"></a><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>My First Day In Github Pages</title>
+      <link href="/2019/03/31/My-First-Day-In-Github-Pages/"/>
+      <url>/2019/03/31/My-First-Day-In-Github-Pages/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>essay[随笔]</category>
+          
+          <category> essay[随笔] </category>
+          
       </categories>
-      <tags>
-        <tag>入门</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> 入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
