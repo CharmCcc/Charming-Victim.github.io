@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[计算机网络知识巩固(十一)]]></title>
+    <url>%2F2019%2F04%2F16%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%8D%81%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章介绍一下网际控制报文协议ICMP,仅记忆几张图即可. 网际控制报文协议ICMP 四种常见的ICMP差错报告报文 两种ICMP询问报文 ICMP的应用举例 以上知识源于B站点击此处跳转]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>B站视频</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[计算机网络知识巩固(十)]]></title>
     <url>%2F2019%2F04%2F16%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA-%E5%8D%81%2F</url>
     <content type="text"><![CDATA[每天花一分钟看一篇就够啦 本小章介绍一下IPv4数据报的首部. 数据包的逐层封装 接下来的内容涵盖在IP首部中 IPv4数据报首部格式 版本 首部长度 区分服务 总长度 讲到首部长度和总长度我们来看一个例子吧,Tips:首部长度以4字节为单位 由于IPv4数据报长度有限,有时需要分片，这时就需要标识,标志，片偏移字段了 标识 (不同主机可能发送的标识相同,需结合源IP地址加以区分) 片偏移 标志 IPv4数据报分片举例 生存时间 协议 首部校验和 源IP地址和目的IP地址 可选字段(长度可变) 填充 以上知识源于B站点击此处跳转]]></content>
